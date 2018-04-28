@@ -55,7 +55,7 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	private int NBR_ROUNDS = 100;
 	private double THRESHOLD = 0.60; // percentage of rounds with average distance > start distance
 	private double IMMOBILE_TURNS_LIMIT = 25; // maximum turns without moving
-	private boolean PRINT_DEBUG = true;
+	private boolean PRINT_DEBUG = false;
 			
 	// attributes used in the system test case
 	private double startDistance;
