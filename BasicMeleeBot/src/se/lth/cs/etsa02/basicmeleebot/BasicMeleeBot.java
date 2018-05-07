@@ -68,7 +68,7 @@ public class BasicMeleeBot extends TeamRobot {
 	}
 	
 	/**
-	 * onMessageReceived:  What to do when our leader sends a message
+	 * onMessageReceived:  What to do when our leader sends a message.
 	 */
 	public void onMessageReceived(MessageEvent e) {
 		// Set our colors
