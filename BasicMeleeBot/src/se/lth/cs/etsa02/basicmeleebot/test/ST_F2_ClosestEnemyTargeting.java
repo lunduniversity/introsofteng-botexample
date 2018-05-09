@@ -177,8 +177,6 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 		
 		prevDuck1Energy = duck1.getEnergy();
 		prevDuck2Energy = duck2.getEnergy();
-		
-		lastX = duck1.getX();
 	}
 	
 	/**
