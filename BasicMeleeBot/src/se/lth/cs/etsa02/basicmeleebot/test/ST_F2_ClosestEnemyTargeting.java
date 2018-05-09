@@ -195,8 +195,6 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	 */
 	@Override
 	public void onRoundEnded(RoundEndedEvent event) {
-		
-		
 		assertTrue("Check that the closest SittingDuck dies first", turnDuck1Died < turnDuck2Died);
 	}
 }
