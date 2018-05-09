@@ -56,6 +56,8 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	private int turnDuck2Died;
 	private double prevDuck1Energy;
 	private double prevDuck2Energy;
+	
+	private double lastX;
 		
 	/**
 	 * The names of the robots that want battling is specified.
@@ -97,7 +99,7 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	public String getInitialPositions() {
 		//We place our robot in the lower left corner while the other two in the upper right corner.
 		//The last robot is placed farthest away. We then check that this robot always dies last.
-		return "25,25,0, 750,550,0 ,780,580,0";
+		return "(25,25,0), (750,550,0), (780,25,0)";
 	}
 
 	/**
@@ -177,6 +179,8 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 		
 		prevDuck1Energy = duck1.getEnergy();
 		prevDuck2Energy = duck2.getEnergy();
+		
+		lastX = duck1.getX();
 	}
 	
 	/**
@@ -195,6 +199,8 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	 */
 	@Override
 	public void onRoundEnded(RoundEndedEvent event) {
+		
+		
 		assertTrue("Check that the closest SittingDuck dies first", turnDuck1Died < turnDuck2Died);
 	}
 }
