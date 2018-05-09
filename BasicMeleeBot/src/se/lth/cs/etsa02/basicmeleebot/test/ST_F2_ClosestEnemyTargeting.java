@@ -56,8 +56,6 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	private int turnDuck2Died;
 	private double prevDuck1Energy;
 	private double prevDuck2Energy;
-	
-	private double lastX;
 		
 	/**
 	 * The names of the robots that want battling is specified.
