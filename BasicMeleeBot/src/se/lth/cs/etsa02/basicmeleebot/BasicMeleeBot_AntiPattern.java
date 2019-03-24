@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package etsa02_lab2;
+package se.lth.cs.etsa02.basicmeleebot;
 
 import java.awt.geom.Point2D;
 
