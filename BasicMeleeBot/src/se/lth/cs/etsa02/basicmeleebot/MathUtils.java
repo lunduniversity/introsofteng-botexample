@@ -28,6 +28,7 @@ import java.awt.geom.Point2D;
 
 import robocode.Robot;
 import robocode.ScannedRobotEvent;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class MathUtils {
 	
@@ -38,10 +39,10 @@ public class MathUtils {
 	 * @return The position of the enemy robot in two dimensions.
 	 */
 	public static Point2D.Double calcEnemyPosition(Robot robot, ScannedRobotEvent e) {
-		double absBearing = e.getBearing() + robot.getHeading();
-		double x = robot.getX() + e.getDistance() * Math.sin(Math.toRadians(absBearing));
-		double y = robot.getY() + e.getDistance() * Math.cos(Math.toRadians(absBearing));
-		return new Point2D.Double(x, y);
+		// ETSA02 Lab2: Implement this using basic trigonometry, i.e., bearing and heading.
+		// This is described in http://mark.random-article.com/weber/java/robocode/lesson4.html
+		// Note that this is already implemented in onScannedRobot() in BasicMeleeBot_AntiPattern		
+		throw new NotImplementedException();
 	}
 	
 	/** 
@@ -52,9 +53,8 @@ public class MathUtils {
 	 * @return The angle between the two points, in radians.
 	 */
 	public static double calcAngle(Point2D.Double p1, Point2D.Double p2) {
-		double dx = p2.x - p1.x;
-		double dy = p2.y - p1.y;
-		return Math.atan2(dx, dy);
+		// ETSA02 Lab2: Copy this method from the BasicMeleeBot_AntiPattern class.
+		throw new NotImplementedException();
 	}
 	
 	/**
@@ -65,6 +65,7 @@ public class MathUtils {
 	 * @return The angle between the two points, in degrees.
 	 */
 	public static double calcAngleDegrees(Point2D.Double p1, Point2D.Double p2) {
-		return Math.toDegrees(calcAngle(p1, p2));
+		// ETSA02 Lab2: Call the method above and convert to degrees using Math.toDegrees()
+		throw new NotImplementedException();
 	}
 }

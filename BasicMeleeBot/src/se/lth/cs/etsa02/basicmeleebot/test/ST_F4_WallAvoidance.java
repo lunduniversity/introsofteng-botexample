@@ -26,12 +26,9 @@ SOFTWARE.
 package se.lth.cs.etsa02.basicmeleebot.test;
 
 import static org.junit.Assert.assertTrue;
-
-import java.util.LinkedList;
-import java.util.Random;
-
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
 import robocode.BattleResults;
 import robocode.control.events.BattleCompletedEvent;
 import robocode.control.events.RoundEndedEvent;
@@ -51,19 +48,12 @@ import robocode.control.testing.RobotTestBed;
 public class ST_F4_WallAvoidance extends RobotTestBed {
 	
 	// constants used to configure this system test case
-	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
+	private String ROBOT_UNDER_TEST = "etsa02_lab3.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SittingDuck,sample.SittingDuck";
 	private int NBR_ROUNDS = 500;
-	private double THRESHOLD = 0.95;
-	private double PERCENT_AT_WALLS = 0.10;
 	private int SIZE_X = 800;
 	private int SIZE_Y = 600;
 	private boolean PRINT_DEBUG = false;
-	
-	// attributes used in the system test case
-	private int turnCounter;
-	private int closeToWallCounter;
-	private int roundsPassed;
 	
 	/**
 	 * The names of the robots that want battling is specified.
@@ -117,7 +107,7 @@ public class ST_F4_WallAvoidance extends RobotTestBed {
 	 */
 	@Override
 	public boolean isDeterministic() {
-		return false;
+		return true;
 	}
 
 	/**
@@ -138,7 +128,6 @@ public class ST_F4_WallAvoidance extends RobotTestBed {
 	 */
 	@Override
 	protected void runSetup() {
-		roundsPassed = 0;
 	}
 
 	/**
@@ -151,45 +140,38 @@ public class ST_F4_WallAvoidance extends RobotTestBed {
 	}
 	
 	/**
-	 * Tests to see that BMB robot beat SittingDuck and did maximum damage.
+	 * Called after the battle. Provided here to show that you could use this
+	 * method as part of your testing.
 	 * 
 	 * @param event
 	 *            Holds information about the battle has been completed.
 	 */
 	@Override
 	public void onBattleCompleted(BattleCompletedEvent event) {
-		assertTrue("BMB spent too much time close to walls. It succeeded only in " + ((double) roundsPassed / NBR_ROUNDS) +
-				" rounds.", ((double) roundsPassed / NBR_ROUNDS) > THRESHOLD);
+		// ETSA02 Lab 3: Remove this assertion and implement a proper test case.
+		assertTrue("ST_F4_WallAvoidance not implemented yet", false);
 	}
-
+	
 	/**
-	 * Called before each round. Used to to reset all distance calculations.
+	 * Called before each round. Provided here to show that you could use this
+	 * method as part of your testing.
 	 * 
 	 * @param event
 	 *            The RoundStartedEvent.
 	 */
 	@Override
 	public void onRoundStarted(RoundStartedEvent event) {
-		turnCounter = 0;
-		closeToWallCounter = 0;
 	}
 	
 	/**
-	 * Tests to see that BMB was mostly more than 20 distance units from the walls.
+	 * Called after each round. Provided here to show that you could use this
+	 * method as part of your testing.
 	 * 
 	 * @param event
 	 *            The RoundEndedEvent.
 	 */
 	@Override
 	public void onRoundEnded(RoundEndedEvent event) {
-		if (PRINT_DEBUG) {
-			System.out.println("closecounter: " + closeToWallCounter +
-							   " turns: " + turnCounter);
-		}
-		
-		if (closeToWallCounter <= ((double) PERCENT_AT_WALLS * turnCounter)) {
-			roundsPassed++;
-		}
 	}
 	
 	/**
@@ -201,21 +183,5 @@ public class ST_F4_WallAvoidance extends RobotTestBed {
 	 */
 	@Override
 	public void onTurnEnded(TurnEndedEvent event) {
-		turnCounter++;
-		ITurnSnapshot turnSnap = event.getTurnSnapshot();
-		IRobotSnapshot bmb = turnSnap.getRobots()[0];
-		double xBMB = bmb.getX();
-		double yBMB = bmb.getY();
-		
-		if (PRINT_DEBUG) {
-			System.out.println("BMB pos: " + xBMB + ", " + yBMB);
-		}
-		
-		// check if close to any walls
-		if (yBMB < 20 ||  yBMB > (SIZE_Y - 20)
-			|| xBMB < 20 || xBMB > (SIZE_X - 20)) {
-			closeToWallCounter++;
-		}
 	}
-
 }

@@ -25,7 +25,9 @@ SOFTWARE.
 package se.lth.cs.etsa02.basicmeleebot;
 
 import java.awt.geom.Point2D;
+
 import robocode.util.Utils;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * A simple class handling aiming and firing. It simply shoots at the closest target 
@@ -33,8 +35,7 @@ import robocode.util.Utils;
  */
 public class TargetingSystem {
 	
-	private EnemyTracker enemyTracker;
-	private BasicMeleeBot robot;
+	// ETSA02 Lab2: Add attributes according to the provided UML class diagram.
 	
 	/**
 	 * Construct a simple object to handle head-on targeting. It simply shoots at the closest target 
@@ -43,41 +44,15 @@ public class TargetingSystem {
 	 * @param robot the robot we are currently working on
 	 */
 	public TargetingSystem(EnemyTracker enemyTracker, BasicMeleeBot robot) {
-		this.enemyTracker = enemyTracker;
-		this.robot = robot;
+		// ETSA02 Lab2: Implement this constructor to initiate the attributes.
+		throw new NotImplementedException();
 	}
 	
 	/**
 	 * To be called every turn. Find the closest target and shoot at it.
 	 */
 	public void update() {
-		// find the closest enemy and store its position
-		Point2D.Double robotPosition = new Point2D.Double(robot.getX(), robot.getY());
-		
-		double smallestDistanceSq = Double.POSITIVE_INFINITY;
-		Point2D.Double pointToTurnTo = null;
-		Point2D.Double[] enemyPositions = enemyTracker.getEnemyPositions();
-		for (int i = 0; i < enemyTracker.getEnemyCount(); i++) {
-			Point2D.Double enemyPosition = enemyPositions[i];
-			double d = enemyPosition.distanceSq(robotPosition);
-			if (d < smallestDistanceSq) {
-				smallestDistanceSq = d;
-				pointToTurnTo = enemyPosition;
-			}
-		}
-		//compute how much our robot's gun has to turn
-		double angleToTurn = 0;
-		if (pointToTurnTo != null) {
-			double dx = pointToTurnTo.x - robotPosition.x;
-			double dy = pointToTurnTo.y - robotPosition.y;
-			angleToTurn = Math.toDegrees(Math.atan2(dx, dy)) - robot.getGunHeading();
-		}
-
-		// fire when the gun has finished turning
-		if (robot.getGunTurnRemaining() == 0) {
-			robot.setFire(1);
-		}
-		// turn the gun
-		robot.setTurnGunRight(Utils.normalRelativeAngleDegrees(angleToTurn));
+		// ETSA02 Lab2: Implement this by adapting the parts under AIMING AND SHOOTING.
+		throw new NotImplementedException();
 	}
 }
