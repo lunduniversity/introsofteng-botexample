@@ -33,7 +33,7 @@ import robocode.ScannedRobotEvent;
  * 
  * Skeleton robot prepared for ETSA02 labs. Prepared to evolve into project.
  */
-public class BasicMeleeBot extends AdvancedRobot {
+public class BasicMeleeBot extends TeamRobot {
 
 	private EnemyTracker enemyTracker;
 	private PositioningSystem positioningSystem;
@@ -68,11 +68,11 @@ public class BasicMeleeBot extends AdvancedRobot {
 	/**
 	 * Describes the action taken when a robot has been scanned.
 	 * 
-	 * @param event The ScannedRobotEvent provided by Robocode.
+	 * @param e The ScannedRobotEvent provided by Robocode.
 	 */
 	@Override
-	public void onScannedRobot(ScannedRobotEvent event) {
-		enemyTracker.addEnemy(event);
+	public void onScannedRobot(ScannedRobotEvent e) {
+		enemyTracker.addEnemy(e);
 	}
 	
 	/**
@@ -81,7 +81,7 @@ public class BasicMeleeBot extends AdvancedRobot {
 	 * @param event The RobotDeathEvent provided by Robocode.
 	 */
 	@Override
-	public void onRobotDeath(RobotDeathEvent event) {
-		enemyTracker.removeEnemy(event.getName());
+	public void onRobotDeath(RobotDeathEvent e) {
+		enemyTracker.removeEnemy(e.getName());
 	}
 }
