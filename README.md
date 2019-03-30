@@ -3,7 +3,7 @@ Supplementary teaching material for "Introduction to Software Engineering" at Lu
 
 This repository contains the source code needed to complete the ETSA02 lab exercises, i.e., implementing Basic Melee Bot. The repository contains all dependencies to allow further evolution into the course project.
 
-This repository can act as a good starting point for the projects. The functionality of the robot will be implemented during Lab 2 and Lab 3. Note that the repository contains four additional classes that might be useful if you plan to evolve this robot into an ETSA02 project:
+This repository can act as a good starting point for the projects. The functionality of the robot will be implemented during Lab 2 and Lab 3. Note that the repository contains four additional classes that might be useful if you plan to evolve this robot into an ETSA02 project for the LU Rumble:
 
 - RobotColors: Serializable class used to communicate team colors.
 - MessageReader: Prototype implementation to read ETSA02 RoboTalk messages.
