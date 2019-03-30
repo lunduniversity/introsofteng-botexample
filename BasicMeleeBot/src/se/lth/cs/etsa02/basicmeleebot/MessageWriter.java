@@ -25,7 +25,7 @@ SOFTWARE.
 package se.lth.cs.etsa02.basicmeleebot;
 
 /**
- * A class to help with composing a message.
+ * A class to help composing ETSA02 RoboTalk messages.
  * @author DavidPhung
  */
 public class MessageWriter {

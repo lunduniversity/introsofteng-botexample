@@ -60,18 +60,18 @@ public class MovementSystem {
 
 		// ETSA02 Lab2: Final task if time permits. Uncomment the code below and move it to just before the
 		// comment "// Set the movement in a smart way so that the robot would never turn more than 90 degrees."
-		// Start
 		
 		// To handle wall-avoidance, we check to see if our robot is close to a wall.
 		// If it is, we spawn a repulsive point on that wall to push our robot away.
-		/*Wall closestWall = positioningSystem.checkCloseToWall(robotPosition, 40);
-		if (closestWall != null) {
-			repulsivePoint = positioningSystem.getProjectionOnWall(robotPosition, closestWall);
-		}
 		
-		if (repulsivePoint != null) {
-			computeForce(robotPosition, repulsivePoint);
-		}*/
+		//Wall closestWall = positioningSystem.checkCloseToWall(robotPosition, 40);
+		//if (closestWall != null) {
+		//	repulsivePoint = positioningSystem.getProjectionOnWall(robotPosition, closestWall);
+		//}
+		//
+		//if (repulsivePoint != null) {
+		//	computeForce(robotPosition, repulsivePoint);
+		//}
 	}
 	
 	 /**
