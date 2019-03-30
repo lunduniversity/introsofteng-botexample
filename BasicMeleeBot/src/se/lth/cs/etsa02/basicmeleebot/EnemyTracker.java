@@ -56,7 +56,7 @@ public class EnemyTracker {
 		// You get the first line of code for free - uncomment it and add the rest
 		
 		//Point2D.Double enemyPosition = MathUtils.calcEnemyPosition(robot, e);
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/**
@@ -65,7 +65,7 @@ public class EnemyTracker {
 	 */
 	public void removeEnemy(String name) {
 		// ETSA02 Lab2: Remove an enemy from the database. This behavior was previously in onRobotDeath()
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/**
@@ -79,7 +79,8 @@ public class EnemyTracker {
 		//for (int i = 0; i < enemyCount; i++) {
 		//	positions[i] = enemyPositions[i];
 		//}
-		//return positions;		
+		//return positions;
+		
 		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	

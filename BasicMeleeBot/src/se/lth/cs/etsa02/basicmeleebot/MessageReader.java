@@ -25,7 +25,7 @@ SOFTWARE.
 package se.lth.cs.etsa02.basicmeleebot;
 
 /**
- * A class to help with the reading of messages.
+ * A class to help parsing ETSA02 RoboTalk messages.
  * @author DavidPhung
  */
 public class MessageReader {
