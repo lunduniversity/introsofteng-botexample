@@ -46,7 +46,7 @@ import robocode.control.testing.RobotTestBed;
 public class ST_F3_AntiGravMovement extends RobotTestBed {
 	
 	// constants used to configure this system test case
-	private String ROBOT_UNDER_TEST = "etsa02_lab3.BasicMeleeBot*";
+	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SittingDuck";
 	private int NBR_ROUNDS = 500;
 	private double THRESHOLD = 0.60; // percentage of rounds with average distance > start distance
