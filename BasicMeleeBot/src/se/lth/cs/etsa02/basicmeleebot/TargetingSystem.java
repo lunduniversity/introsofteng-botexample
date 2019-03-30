@@ -27,7 +27,6 @@ package se.lth.cs.etsa02.basicmeleebot;
 import java.awt.geom.Point2D;
 
 import robocode.util.Utils;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * A simple class handling aiming and firing. It simply shoots at the closest target 
@@ -45,7 +44,7 @@ public class TargetingSystem {
 	 */
 	public TargetingSystem(EnemyTracker enemyTracker, BasicMeleeBot robot) {
 		// ETSA02 Lab2: Implement this constructor to initiate the attributes.
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/**
@@ -53,6 +52,6 @@ public class TargetingSystem {
 	 */
 	public void update() {
 		// ETSA02 Lab2: Implement this by adapting the parts under AIMING AND SHOOTING.
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 }

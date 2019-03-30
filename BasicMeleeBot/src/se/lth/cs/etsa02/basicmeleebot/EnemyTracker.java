@@ -29,7 +29,6 @@ import java.util.Arrays;
 
 import robocode.AdvancedRobot;
 import robocode.ScannedRobotEvent;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * A class to help with the management of enemies.
@@ -45,7 +44,7 @@ public class EnemyTracker {
 	public EnemyTracker(BasicMeleeBot robot) {
 		// ETSA02 Lab2: Implement this constructor to initiate the attributes.
 		// Make room for 10 enemies when you create the arrays.
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/** 
@@ -56,7 +55,7 @@ public class EnemyTracker {
 		// ETSA02 Lab2: Add an enemy to the database. This behavior was previously in onScannedRobot()
 		// You get the first line of code for free - uncomment it and add the rest
 		
-		//Point2D.Double position = MathUtils.calcEnemyPosition(robot, e);
+		//Point2D.Double enemyPosition = MathUtils.calcEnemyPosition(robot, e);
 		throw new NotImplementedException();
 	}
 	
@@ -81,7 +80,7 @@ public class EnemyTracker {
 		//	positions[i] = enemyPositions[i];
 		//}
 		//return positions;		
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/**
@@ -89,11 +88,11 @@ public class EnemyTracker {
 	 */
 	public int getEnemyCount() {
 		// ETSA02 Lab2: Return the enemy count.
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	private int findEnemyByName(String name) {
 		// ETSA02 Lab2: Copy this method from BasicMeleeBot_AntiPattern.
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 }

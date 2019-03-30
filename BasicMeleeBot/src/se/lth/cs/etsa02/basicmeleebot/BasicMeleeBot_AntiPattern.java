@@ -134,19 +134,19 @@ public class BasicMeleeBot_AntiPattern extends TeamRobot {
 	 * @param event The ScannedRobotEvent provided by Robocode.
 	 */
 	@Override
-	public void onScannedRobot(ScannedRobotEvent event) {
+	public void onScannedRobot(ScannedRobotEvent e) {
 		// Compute the position of a scanned robot.
-		double absBearing = event.getBearing() + getHeading();
-		double x = getX() + event.getDistance() * Math.sin(Math.toRadians(absBearing));
-		double y = getY() + event.getDistance() * Math.cos(Math.toRadians(absBearing));
+		double absBearing = e.getBearing() + getHeading();
+		double x = getX() + e.getDistance() * Math.sin(Math.toRadians(absBearing));
+		double y = getY() + e.getDistance() * Math.cos(Math.toRadians(absBearing));
 		Point2D.Double enemyPosition = new Point2D.Double(x, y);
 		
 		// If the scanned robot is already stored in the arrays, update its position. Otherwise add it as a new element.
-		int index = findEnemyByName(event.getName());
+		int index = findEnemyByName(e.getName());
 		if (index >= 0) {
 			enemyPositions[index] = enemyPosition;
 		} else {
-			enemyNames[enemyCount] = event.getName();
+			enemyNames[enemyCount] = e.getName();
 			enemyPositions[enemyCount] = enemyPosition;
 			enemyCount++;
 		}
@@ -158,9 +158,9 @@ public class BasicMeleeBot_AntiPattern extends TeamRobot {
 	 * @param event The RobotDeathEvent provided by Robocode.
 	 */
 	@Override
-	public void onRobotDeath(RobotDeathEvent event) {
+	public void onRobotDeath(RobotDeathEvent e) {
 		// Remove the destroyed robot from the arrays.
-		int index = findEnemyByName(event.getName());
+		int index = findEnemyByName(e.getName());
 		if (index >= 0) {
 			for (int i = index + 1; i < enemyCount; i++) {
 				enemyNames[i - 1] = enemyNames[i];

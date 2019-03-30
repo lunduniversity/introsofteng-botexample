@@ -27,7 +27,6 @@ package se.lth.cs.etsa02.basicmeleebot;
 import java.awt.geom.Point2D;
 
 import robocode.util.Utils;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Handles the computation for a type of movement called Anti-gravity and is based on
@@ -46,9 +45,9 @@ public class MovementSystem {
 	 * @param enemyHelper the object managing enemies.
 	 * @param battleField the object handling battle field related calculations.
 	 */
-	public MovementSystem(BasicMeleeBot robot, EnemyTracker enemyTracker, PositioningSystem battleField) {
+	public MovementSystem(BasicMeleeBot robot, EnemyTracker enemyTracker, PositioningSystem positioningSystem) {
 		// ETSA02 Lab2: Implement this constructor to initiate the attributes.
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 
 	/**
@@ -56,12 +55,27 @@ public class MovementSystem {
 	 */
 	public void update() {
 		// ETSA02 Lab2: Copy movement parts from BasicMeleeBot_AntiPattern here
-		// ETSA02 Lab2: Final task if time permits, implement some kind of "wall avoidance".
-		throw new NotImplementedException();
+		// When this is done, you can start Robocode and try the robot. It should get stuck in a wall.
+		throw new UnsupportedOperationException("To be implemented in Lab2");
+
+		// ETSA02 Lab2: Final task if time permits. Uncomment the code below and move it to just before the
+		// comment "// Set the movement in a smart way so that the robot would never turn more than 90 degrees."
+		// Start
+		
+		// To handle wall-avoidance, we check to see if our robot is close to a wall.
+		// If it is, we spawn a repulsive point on that wall to push our robot away.
+		/*Wall closestWall = positioningSystem.checkCloseToWall(robotPosition, 40);
+		if (closestWall != null) {
+			repulsivePoint = positioningSystem.getProjectionOnWall(robotPosition, closestWall);
+		}
+		
+		if (repulsivePoint != null) {
+			computeForce(robotPosition, repulsivePoint);
+		}*/
 	}
 	
 	private void computeForce(Point2D.Double robotPosition, Point2D.Double repulsivePoint) {
 		// ETSA02 Lab2: Break out the code that sets the xForce and yForce to this method
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 }

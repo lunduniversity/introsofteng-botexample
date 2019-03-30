@@ -26,10 +26,8 @@ package se.lth.cs.etsa02.basicmeleebot;
 
 import java.awt.geom.Point2D;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 /** 
- * A class providing support for calculation related to the battle field.
+ * A class providing support for calculating positions related to the battle field.
  */
 public class PositioningSystem {
 	
@@ -44,7 +42,7 @@ public class PositioningSystem {
 	 */
 	public PositioningSystem(double width, double height) {
 		// ETSA02 Lab2: Implement this constructor to initiate the attributes.
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/**
@@ -55,7 +53,7 @@ public class PositioningSystem {
 	 */
 	public Wall checkCloseToWall(Point2D.Double point, double nearWallDistance) {
 		// ETSA02 Lab2: Implement this method using the corresponding unit tests as a guide.
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/**
@@ -66,6 +64,6 @@ public class PositioningSystem {
 	 */
 	public Point2D.Double getProjectionOnWall(Point2D.Double point, Wall wall) {
 		// ETSA02 Lab2: Implement this method using the corresponding unit tests as a guide.
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 }
