@@ -42,7 +42,7 @@ public class MathUtils {
 		// ETSA02 Lab2: Implement this using basic trigonometry, i.e., bearing and heading.
 		// This is described in http://mark.random-article.com/weber/java/robocode/lesson4.html
 		// Note that this is already implemented in onScannedRobot() in BasicMeleeBot_AntiPattern		
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/** 
@@ -54,7 +54,7 @@ public class MathUtils {
 	 */
 	public static double calcAngle(Point2D.Double p1, Point2D.Double p2) {
 		// ETSA02 Lab2: Copy this method from the BasicMeleeBot_AntiPattern class.
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/**
@@ -66,6 +66,6 @@ public class MathUtils {
 	 */
 	public static double calcAngleDegrees(Point2D.Double p1, Point2D.Double p2) {
 		// ETSA02 Lab2: Call the method above and convert to degrees using Math.toDegrees()
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 }
