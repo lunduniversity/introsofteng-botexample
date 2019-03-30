@@ -74,6 +74,11 @@ public class MovementSystem {
 		}*/
 	}
 	
+	 /**
+	 * Compute the repulsive force based on BasicMeleeBot's position and a repulsive point.
+	 * @param robotPosition The position of BasicMeleeBot.
+	 * @param repulsivePoint The repulsive point.
+	 */
 	private void computeForce(Point2D.Double robotPosition, Point2D.Double repulsivePoint) {
 		// ETSA02 Lab2: Break out the code that sets the xForce and yForce to this method
 		throw new UnsupportedOperationException("To be implemented in Lab2");
