@@ -73,6 +73,8 @@ public class BasicMeleeBot_AntiPattern extends TeamRobot {
 			// Don't worry too much about the details of the computation steps.
 
 			// The sum of all forces is represented as a vector whose x and y components are xForce and yForce.
+			// For the refactoring task in Lab 2, note that these two variables shall be replaced by
+			// two corresponding attributes in the class MovementSystem.
 			double xForce = 0;
 			double yForce = 0;
 			// Loop through all enemies and compute their forces.
