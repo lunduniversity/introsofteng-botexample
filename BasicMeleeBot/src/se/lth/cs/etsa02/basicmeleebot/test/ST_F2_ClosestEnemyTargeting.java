@@ -97,7 +97,7 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	public String getInitialPositions() {
 		//We place our robot in the lower left corner while the other two in the upper right corner.
 		//The last robot is placed farthest away. We then check that this robot always dies last.
-		return "(25,25,0), (750,550,0), (780,25,0)";
+		return "(25,25,0), (300,350,0), (700,500,0)";
 	}
 
 	/**
