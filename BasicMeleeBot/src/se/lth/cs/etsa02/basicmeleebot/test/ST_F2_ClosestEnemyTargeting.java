@@ -26,10 +26,10 @@ SOFTWARE.
 package se.lth.cs.etsa02.basicmeleebot.test;
 
 import static org.junit.Assert.assertTrue;
-
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import robocode.control.events.BattleCompletedEvent;
 import robocode.control.events.RoundEndedEvent;
 import robocode.control.events.RoundStartedEvent;
 import robocode.control.events.TurnEndedEvent;
@@ -47,16 +47,10 @@ import robocode.control.testing.RobotTestBed;
 public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	
 	// constants used to configure this system test case
-	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
+	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SittingDuck,sample.SittingDuck";
 	private int NBR_ROUNDS = 1; //the battle will be deterministic and we will set initial positions so one round is enough.
-	private boolean PRINT_DEBUG = false;
 	
-	private int turnDuck1Died;
-	private int turnDuck2Died;
-	private double prevDuck1Energy;
-	private double prevDuck2Energy;
-		
 	/**
 	 * The names of the robots that want battling is specified.
 	 * 
@@ -95,9 +89,7 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	 */
 	@Override
 	public String getInitialPositions() {
-		//We place our robot in the lower left corner while the other two in the upper right corner.
-		//The last robot is placed farthest away. We then check that this robot always dies last.
-		return "(25,25,0), (300,350,0), (700,500,0)";
+		return null;
 	}
 
 	/**
@@ -131,7 +123,6 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	 */
 	@Override
 	protected void runSetup() {
-		// Default does nothing.
 	}
 
 	/**
@@ -141,60 +132,52 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	 */
 	@Override
 	protected void runTeardown() {
-		// Default does nothing.
 	}
 	
 	/**
-	 * Called after every turn. Used to record the turn in which the robots were destroyed.
+	 * Called after the battle. Provided here to show that you could use this
+	 * method as part of your testing.
+	 * 
+	 * @param event
+	 *            Holds information about the battle has been completed.
 	 */
 	@Override
-	public void onTurnEnded(TurnEndedEvent event) {
-		IRobotSnapshot duck1 = event.getTurnSnapshot().getRobots()[1];
-		IRobotSnapshot duck2 = event.getTurnSnapshot().getRobots()[2];
-		
-		// test constant firepower
-		if (PRINT_DEBUG) {
-			System.out.println("Energy diff for duck 1: " + (duck1.getEnergy() - prevDuck1Energy));
-			System.out.println("Energy diff for duck 2: " + (duck2.getEnergy() - prevDuck2Energy));
-		}
-		
-		if (duck1.getState() == RobotState.ACTIVE && duck1.getEnergy() != prevDuck1Energy) {
-			assertTrue("BMB firepower not constant! SittingDuck 1 did not lose expected energy", duck1.getEnergy() == prevDuck1Energy - 4);
-		}
-		
-		if (duck2.getState() == RobotState.ACTIVE && duck2.getEnergy() != prevDuck2Energy) {
-			assertTrue("BMB firepower not constant! SittingDuck 2 did not lose expected energy", duck2.getEnergy() == prevDuck2Energy - 4);
-		}
-		
-		// test order of kills
-		if (turnDuck1Died == -1 && duck1.getState() == RobotState.DEAD) {
-			turnDuck1Died = event.getTurnSnapshot().getTurn();
-		}
-		
-		if (turnDuck2Died == -1 && duck2.getState() == RobotState.DEAD) {
-			turnDuck2Died = event.getTurnSnapshot().getTurn();
-		}
-		
-		prevDuck1Energy = duck1.getEnergy();
-		prevDuck2Energy = duck2.getEnergy();
+	public void onBattleCompleted(BattleCompletedEvent event) {
+		// ETSA02 Lab 3: Remove this assertion and implement a proper test case.
+		assertTrue("ST_F2_ClosestEnemyTargeting not implemented yet", false);
 	}
 	
 	/**
-	 * Called before each round. Used to reset turn variables.
+	 * Called before each round. Provided here to show that you could use this
+	 * method as part of your testing.
+	 * 
+	 * @param event
+	 *            The RoundStartedEvent.
 	 */
 	@Override
 	public void onRoundStarted(RoundStartedEvent event) {
-		turnDuck1Died = -1;
-		turnDuck2Died = -1;
-		prevDuck1Energy = event.getStartSnapshot().getRobots()[1].getEnergy();
-		prevDuck2Energy = event.getStartSnapshot().getRobots()[2].getEnergy();
 	}
 	
 	/**
-	 * Called after each round. Used to assert the order in which the robots were destroyed.
+	 * Called after each round. Provided here to show that you could use this
+	 * method as part of your testing.
+	 * 
+	 * @param event
+	 *            The RoundEndedEvent.
 	 */
 	@Override
 	public void onRoundEnded(RoundEndedEvent event) {
-		assertTrue("Check that the closest SittingDuck dies first", turnDuck1Died < turnDuck2Died);
 	}
+	
+	/**
+	 * Called after each turn. Provided here to show that you could use this
+	 * method as part of your testing.
+	 * 
+	 * @param event
+	 *            The TurnEndedEvent.
+	 */
+	@Override
+	public void onTurnEnded(TurnEndedEvent event) {
+	}
+	
 }
