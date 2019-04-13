@@ -24,15 +24,14 @@ SOFTWARE.
 
 package se.lth.cs.etsa02.basicmeleebot;
 
-import robocode.TeamRobot;
-import robocode.MessageEvent;
+import robocode.AdvancedRobot;
 import robocode.RobotDeathEvent;
 import robocode.ScannedRobotEvent;
 
 /**
  * @author David Phung
  * 
- * Example robot for ETSA02. A melee bot implemented following an object oriented design.
+ * Skeleton robot prepared for ETSA02 labs. Prepared to evolve into project.
  */
 public class BasicMeleeBot extends TeamRobot {
 
@@ -54,7 +53,6 @@ public class BasicMeleeBot extends TeamRobot {
 		setAdjustGunForRobotTurn(true);
 		setAdjustRadarForGunTurn(true);
 		
-		setTurnRadarRight(Double.POSITIVE_INFINITY);
 		targetingSystem.update();
 		movementSystem.update();
 		execute();
@@ -68,32 +66,13 @@ public class BasicMeleeBot extends TeamRobot {
 	}
 	
 	/**
-	 * onMessageReceived:  What to do when our leader sends a message.
-	 */
-	public void onMessageReceived(MessageEvent e) {
-		// Set our colors
-		if (e.getMessage() instanceof RobotColors) {
-			RobotColors c = (RobotColors) e.getMessage();
-			setBodyColor(c.bodyColor);
-			setGunColor(c.gunColor);
-			setRadarColor(c.radarColor);
-			setScanColor(c.scanColor);
-			setBulletColor(c.bulletColor);
-		}
-	}
-	
-	/**
 	 * Describes the action taken when a robot has been scanned.
 	 * 
-	 * @param event The ScannedRobotEvent provided by Robocode.
+	 * @param e The ScannedRobotEvent provided by Robocode.
 	 */
 	@Override
-	public void onScannedRobot(ScannedRobotEvent event) {
-		if (isTeammate(event.getName())) {
-			return;
-		}
-		
-		enemyTracker.addEnemy(event);
+	public void onScannedRobot(ScannedRobotEvent e) {
+		enemyTracker.addEnemy(e);
 	}
 	
 	/**
@@ -102,7 +81,7 @@ public class BasicMeleeBot extends TeamRobot {
 	 * @param event The RobotDeathEvent provided by Robocode.
 	 */
 	@Override
-	public void onRobotDeath(RobotDeathEvent event) {
-		enemyTracker.removeEnemy(event.getName());
+	public void onRobotDeath(RobotDeathEvent e) {
+		enemyTracker.removeEnemy(e.getName());
 	}
 }

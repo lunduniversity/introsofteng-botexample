@@ -1,5 +1,5 @@
 /**	
-Copyright (c) 2018 David Phung
+Copyright (c) 2017 Markus Borg
 
 Building on work by Mathew A. Nelson and Robocode contributors.
 
@@ -21,37 +21,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-
 package se.lth.cs.etsa02.basicmeleebot;
 
-import java.awt.geom.Point2D;
-
-import robocode.util.Utils;
-
 /**
- * A simple class handling aiming and firing. It simply shoots at the closest target 
- * based on the last known positions of all enemies.
+ * Point - a serializable point class.
  */
-public class TargetingSystem {
-	
-	// ETSA02 Lab2: Add attributes according to the provided UML class diagram.
-	
-	/**
-	 * Construct a simple object to handle head-on targeting. It simply shoots at the closest target 
-	 * based on the last known positions of all enemies.
-	 * @param enemyTracker the object managing enemies.
-	 * @param robot the robot we are currently working on
-	 */
-	public TargetingSystem(EnemyTracker enemyTracker, BasicMeleeBot robot) {
-		// ETSA02 Lab2: Implement this constructor to initiate the attributes.
-		throw new UnsupportedOperationException("To be implemented in Lab2");
+public class Point implements java.io.Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private double x = 0.0;
+	private double y = 0.0;
+
+	public Point(double x, double y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public double getX() {
+		return x;
+	}
+
+	public double getY() {
+		return y;
 	}
 	
-	/**
-	 * To be called every turn. Find the closest target and shoot at it.
-	 */
-	public void update() {
-		// ETSA02 Lab2: Implement this by adapting the parts under AIMING AND SHOOTING.
-		throw new UnsupportedOperationException("To be implemented in Lab2");
+	@Override
+	public boolean equals(Object o) {
+		return ((Point) o).getX() == x && ((Point) o).getY() == y;
+		
 	}
 }

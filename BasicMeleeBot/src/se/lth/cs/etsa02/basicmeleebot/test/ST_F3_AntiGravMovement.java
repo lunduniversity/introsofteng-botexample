@@ -26,10 +26,7 @@ SOFTWARE.
 package se.lth.cs.etsa02.basicmeleebot.test;
 
 import static org.junit.Assert.assertTrue;
-
-import java.awt.geom.Point2D;
 import java.util.LinkedList;
-
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import robocode.control.events.BattleCompletedEvent;
@@ -37,7 +34,6 @@ import robocode.control.events.RoundEndedEvent;
 import robocode.control.events.RoundStartedEvent;
 import robocode.control.events.TurnEndedEvent;
 import robocode.control.snapshot.IRobotSnapshot;
-import robocode.control.snapshot.RobotState;
 import robocode.control.testing.RobotTestBed;
 
 /**
@@ -50,19 +46,11 @@ import robocode.control.testing.RobotTestBed;
 public class ST_F3_AntiGravMovement extends RobotTestBed {
 	
 	// constants used to configure this system test case
-	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
+	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SittingDuck";
-	private int NBR_ROUNDS = 100;
+	private int NBR_ROUNDS = 500;
 	private double THRESHOLD = 0.60; // percentage of rounds with average distance > start distance
-	private double IMMOBILE_TURNS_LIMIT = 25; // maximum turns without moving
 	private boolean PRINT_DEBUG = false;
-			
-	// attributes used in the system test case
-	private double startDistance;
-	private double avgDistance;
-	private LinkedList<Double> allDistances;
-	private LinkedList<Point2D> prevPos;
-	private int nbrPassed;
 	
 	/**
 	 * The names of the robots that want battling is specified.
@@ -115,7 +103,7 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	 */
 	@Override
 	public boolean isDeterministic() {
-		return false;
+		return true;
 	}
 
 	/**
@@ -136,8 +124,6 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	 */
 	@Override
 	protected void runSetup() {
-		nbrPassed = 0;
-		prevPos = new LinkedList<Point2D>();
 	}
 
 	/**
@@ -150,102 +136,48 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	}
 	
 	/**
-	 * Check that the average distance is larger than the start distance in most cases.
+	 * Called after the battle. Provided here to show that you could use this
+	 * method as part of your testing.
 	 * 
 	 * @param event
 	 *            Holds information about the battle has been completed.
 	 */
 	@Override
 	public void onBattleCompleted(BattleCompletedEvent event) {
-		assertTrue("Average distance should be larger than start distance in " + THRESHOLD + 
-				" of the rounds, but it was true in only " + ((double) nbrPassed / NBR_ROUNDS) +
-				" rounds.", ((double) nbrPassed / NBR_ROUNDS) > THRESHOLD);
+		// ETSA02 Lab 3: Remove this assertion and implement a proper test case.
+		assertTrue("ST_F3_AntiGravMovement not implemented yet", false);
 	}
 	
 	/**
-	 * Called before each round. Used to to reset all distance calculations.
+	 * Called before each round. Provided here to show that you could use this
+	 * method as part of your testing.
 	 * 
 	 * @param event
 	 *            The RoundStartedEvent.
 	 */
 	@Override
 	public void onRoundStarted(RoundStartedEvent event) {
-		IRobotSnapshot bmb = event.getStartSnapshot().getRobots()[0];
-		double xBMB = bmb.getX();
-		double yBMB = bmb.getY();
-		IRobotSnapshot duck = event.getStartSnapshot().getRobots()[1];
-		double xDuck = duck.getX();
-		double yDuck = duck.getY();
-		
-		startDistance = Math.hypot(xBMB-xDuck, yBMB-yDuck);
-		avgDistance = 0;
-		allDistances = new LinkedList<Double>();
 	}
 	
 	/**
-	 * Tests to see that BMB moves away from the SittingDuck, i.e., average 
-	 * distance is larger than the start distance.
+	 * Called after each round. Provided here to show that you could use this
+	 * method as part of your testing.
 	 * 
 	 * @param event
 	 *            The RoundEndedEvent.
 	 */
 	@Override
 	public void onRoundEnded(RoundEndedEvent event) {
-		// calculate average distance across all turns during the battle
-		double totalDistances = 0;
-		for (double i: allDistances) {
-			totalDistances += i;
-		}		
-		avgDistance = totalDistances / allDistances.size();
-				
-		if (PRINT_DEBUG) {
-			System.out.println("Start distance: " + startDistance +
-						   	   " Average distance: " + avgDistance);
-		}
-				
-		if (avgDistance > startDistance) {
-			nbrPassed++;
-		}
 	}
 	
 	/**
-	 * Check distance to SittingDuck. Also store current BMB position.
+	 * Called after each turn. Provided here to show that you could use this
+	 * method as part of your testing.
 	 * 
 	 * @param event
 	 *            The TurnEndedEvent.
 	 */
 	@Override
 	public void onTurnEnded(TurnEndedEvent event) {
-		// verify increasing distance
-		IRobotSnapshot bmb = event.getTurnSnapshot().getRobots()[0];
-		double xBMB = bmb.getX();
-		double yBMB = bmb.getY();
-		IRobotSnapshot duck = event.getTurnSnapshot().getRobots()[1];
-		double xDuck = duck.getX();
-		double yDuck = duck.getY();
-		
-		double distance = Math.hypot(xBMB-xDuck, yBMB-yDuck);
-		allDistances.add(distance);
-		
-		// verify unique positions from turn IMMOBILE_TURNS_LIMIT as long as SittingDuck is active
-		if (event.getTurnSnapshot().getTurn() >= IMMOBILE_TURNS_LIMIT && duck.getState() == RobotState.ACTIVE) {
-			boolean uniquePos = false;
-			int count = 0;
-			for (int i = 0; !uniquePos && i < prevPos.size(); i++) {
-				for (int j = i+1; !uniquePos && j < prevPos.size(); j++) {
-					if (!prevPos.get(i).equals(prevPos.get(j))) {
-						uniquePos = true;
-					}
-					count++;
-				}
-			}
-			assertTrue("BMB did not move for " + IMMOBILE_TURNS_LIMIT + " turns (turn " + event.getTurnSnapshot().getTurn() + ")", uniquePos);
-		}
-		
-		// store last IMMOBILE_TURNS_LIMIT positions
-		if (prevPos.size() == IMMOBILE_TURNS_LIMIT) {
-			prevPos.poll();
-		}
-		prevPos.add(new Point2D.Double(xBMB, yBMB));	
 	}
 }

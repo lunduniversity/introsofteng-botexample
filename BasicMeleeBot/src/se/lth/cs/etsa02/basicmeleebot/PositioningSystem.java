@@ -25,14 +25,15 @@ SOFTWARE.
 package se.lth.cs.etsa02.basicmeleebot;
 
 import java.awt.geom.Point2D;
+
 /** 
- * A class providing support for calculation related to the battle field.
+ * A class providing support for calculating positions related to the battle field.
  */
 public class PositioningSystem {
 	
 	public enum Wall {TOP, LEFT, RIGHT, BOTTOM};
 	
-	private double width, height;
+	// ETSA02 Lab2: Add attributes according to the provided UML class diagram.
 	
 	/**
 	 * Construct an object to help with battle field related calculations.
@@ -40,8 +41,8 @@ public class PositioningSystem {
 	 * @param height the height of the battle field.
 	 */
 	public PositioningSystem(double width, double height) {
-		this.width = width;
-		this.height = height;
+		// ETSA02 Lab2: Implement this constructor to initiate the attributes.
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/**
@@ -51,21 +52,8 @@ public class PositioningSystem {
 	 * @return if the distance from the point to one of the walls is less than nearWallDistance, return that wall. Otherwise, return null.
 	 */
 	public Wall checkCloseToWall(Point2D.Double point, double nearWallDistance) {
-		double distanceToLeftWall = point.getX();
-		double distanceToRightWall = width - point.getX();
-		double distanceToBottomWall = point.getY();
-		double distanceToTopWall = height - point.getY();
-		
-		if (distanceToLeftWall < nearWallDistance && distanceToLeftWall < distanceToRightWall && distanceToLeftWall < distanceToBottomWall && distanceToLeftWall < distanceToTopWall) {
-			return Wall.LEFT;
-		}else if (distanceToRightWall < nearWallDistance && distanceToRightWall < distanceToTopWall && distanceToRightWall < distanceToBottomWall) {
-			return Wall.RIGHT;
-		}else if (distanceToBottomWall < nearWallDistance && distanceToBottomWall < distanceToTopWall) {
-			return Wall.BOTTOM;
-		}else if (distanceToTopWall < nearWallDistance){
-			return Wall.TOP;
-		}
-		return null;
+		// ETSA02 Lab2: Implement this method using the corresponding unit tests as a guide.
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/**
@@ -75,17 +63,7 @@ public class PositioningSystem {
 	 * @return the projection of the point on the wall.
 	 */
 	public Point2D.Double getProjectionOnWall(Point2D.Double point, Wall wall) {
-		switch (wall) {
-		case TOP:
-			return new Point2D.Double(point.getX(), height);
-		case LEFT:
-			return new Point2D.Double(0, point.getY());
-		case RIGHT:
-			return new Point2D.Double(width, point.getY());
-		case BOTTOM:
-			return new Point2D.Double(point.getX(), 0);
-		default:
-			return null;
-		}
+		// ETSA02 Lab2: Implement this method using the corresponding unit tests as a guide.
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 }

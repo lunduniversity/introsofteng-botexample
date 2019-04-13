@@ -25,7 +25,9 @@ SOFTWARE.
 package se.lth.cs.etsa02.basicmeleebot;
 
 import java.awt.geom.Point2D;
+import java.util.Arrays;
 
+import robocode.AdvancedRobot;
 import robocode.ScannedRobotEvent;
 
 /**
@@ -33,22 +35,16 @@ import robocode.ScannedRobotEvent;
  */
 public class EnemyTracker {
 	
-	//The 3 following variables are used to track enemies. An enemy will have its name and position stored
-	//at the same index in the two arrays enemyNames and enemyPositions. The number of enemies is stored in enemyCount.
-	private Point2D.Double[] enemyPositions;
-	private String[] enemyNames;
-	private int enemyCount;
-	
-	private BasicMeleeBot robot;
+	// ETSA02 Lab2: Add attributes according to the provided UML class diagram.
 		
 	/**
 	 * Construct an object to help with the management of enemies.
 	 * @param robot the robot we are working on.
 	 */
 	public EnemyTracker(BasicMeleeBot robot) {
-		this.robot = robot;
-		enemyNames = new String[10];
-		enemyPositions = new Point2D.Double[enemyNames.length];
+		// ETSA02 Lab2: Implement this constructor to initiate the attributes.
+		// Make room for 10 enemies when you create the arrays.
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/** 
@@ -56,16 +52,11 @@ public class EnemyTracker {
 	 * @param e The ScannedRobotEvent received from the onScannedRobot method.
 	 */ 
 	public void addEnemy(ScannedRobotEvent e) {
-		// if the scanned robot is already added to the arrays, update its position. Otherwise add it as a new element.
-		Point2D.Double enemyPosition = MathUtils.calcEnemyPosition(robot, e);
-		int index = findEnemyByName(e.getName());
-		if (index >= 0) {
-			enemyPositions[index] = enemyPosition;
-		} else {
-			enemyNames[enemyCount] = e.getName();
-			enemyPositions[enemyCount] = enemyPosition;
-			enemyCount++;
-		}
+		// ETSA02 Lab2: Add an enemy to the database. This behavior was previously in onScannedRobot()
+		// You get the first line of code for free - uncomment it and add the rest
+		
+		//Point2D.Double enemyPosition = MathUtils.calcEnemyPosition(robot, e);
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/**
@@ -73,15 +64,8 @@ public class EnemyTracker {
 	 * @param name the name of enemy to stop tracking.
 	 */
 	public void removeEnemy(String name) {
-		// remove the destroyed robot from the arrays
-		int index = findEnemyByName(name);
-		if (index >= 0) {
-			for (int i = index + 1; i < enemyCount; i++) {
-				enemyNames[i - 1] = enemyNames[i];
-				enemyPositions[i-1] = enemyPositions[i];
-			}
-			enemyCount--;
-		}
+		// ETSA02 Lab2: Remove an enemy from the database. This behavior was previously in onRobotDeath()
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/**
@@ -89,30 +73,27 @@ public class EnemyTracker {
 	 * @return An array of the last known enemy positions.
 	 */
 	public Point2D.Double[] getEnemyPositions() {
-		Point2D.Double[] positions = new Point2D.Double[enemyCount];
-		for (int i = 0; i < enemyCount; i++) {
-			positions[i] = enemyPositions[i];
-		}
-		return positions;		
+		// ETSA02 Lab2: You get this method for free. Uncomment the lines below.
+		
+		//Point2D.Double[] positions = new Point2D.Double[enemyCount];
+		//for (int i = 0; i < enemyCount; i++) {
+		//	positions[i] = enemyPositions[i];
+		//}
+		//return positions;
+		
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
 	/**
 	 * @return the number of enemies currently being tracked.
 	 */
 	public int getEnemyCount() {
-		return enemyCount;
+		// ETSA02 Lab2: Return the enemy count.
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 	
-	/**
-	 * Find the index of an enemy robot given its name. The index can then be used to access the robot's position in the position array.
-	 * 
-	 * @param name The name of the robot.
-	 * @return The index of the robot in the internal array, -1 if not found.
-	 */
 	private int findEnemyByName(String name) {
-		for (int i = 0; i < enemyCount; i++) {
-			if (enemyNames[i].equals(name)) return i;
-		}
-		return -1;
+		// ETSA02 Lab2: Copy this method from BasicMeleeBot_AntiPattern.
+		throw new UnsupportedOperationException("To be implemented in Lab2");
 	}
 }
