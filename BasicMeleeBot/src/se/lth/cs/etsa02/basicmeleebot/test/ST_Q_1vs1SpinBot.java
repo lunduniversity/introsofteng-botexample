@@ -30,6 +30,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import robocode.BattleResults;
 import robocode.control.events.BattleCompletedEvent;
 import robocode.control.events.RoundEndedEvent;
 import robocode.control.events.RoundStartedEvent;
@@ -50,7 +52,7 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	private String ENEMY_ROBOTS = "sample.SpinBot";
 	private int NBR_ROUNDS = 100;
 	private double THRESHOLD = 0.75; // win rate against SpinBot
-	private boolean PRINT_DEBUG = false;
+	private boolean PRINT_DEBUG = true;
 		
 	/**
 	 * The names of the robots that want battling is specified.
@@ -124,6 +126,7 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	 */
 	@Override
 	protected void runSetup() {
+		// Default does nothing.
 	}
 
 	/**
@@ -133,52 +136,35 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	 */
 	@Override
 	protected void runTeardown() {
+		// Default does nothing.
 	}
 	
 	/**
-	 * Called after the battle. Provided here to show that you could use this
-	 * method as part of your testing.
+	 * Tests to see if our robot won most rounds.
 	 * 
 	 * @param event
 	 *            Holds information about the battle has been completed.
 	 */
 	@Override
 	public void onBattleCompleted(BattleCompletedEvent event) {
-		// ETSA02 Lab 3: Remove this assertion and implement a proper test case.
-		assertTrue("ST_Q_1vs1SpinBot not implemented yet", false);
-	}
-	
-	/**
-	 * Called before each round. Provided here to show that you could use this
-	 * method as part of your testing.
-	 * 
-	 * @param event
-	 *            The RoundStartedEvent.
-	 */
-	@Override
-	public void onRoundStarted(RoundStartedEvent event) {
-	}
-	
-	/**
-	 * Called after each round. Provided here to show that you could use this
-	 * method as part of your testing.
-	 * 
-	 * @param event
-	 *            The RoundEndedEvent.
-	 */
-	@Override
-	public void onRoundEnded(RoundEndedEvent event) {
-	}
-	
-	/**
-	 * Called after each turn. Provided here to show that you could use this
-	 * method as part of your testing.
-	 * 
-	 * @param event
-	 *            The TurnEndedEvent.
-	 */
-	@Override
-	public void onTurnEnded(TurnEndedEvent event) {
+		// all battle results
+		BattleResults[] battleResults = event.getIndexedResults();
+		// BMB results
+		BattleResults bmbResults = battleResults[0];
+		
+		// check that BMB won the overall battle
+		String robotName = bmbResults.getTeamLeaderName();		
+		assertEquals("Basic Melee Bot should be first in the results array",
+				ROBOT_UNDER_TEST, robotName);
+		
+		// check that the required win rate has been reached
+		double bmbWinRate = (((double) bmbResults.getFirsts()) / NBR_ROUNDS);
+		if (PRINT_DEBUG) {
+			System.out.println("BMB won " + bmbResults.getFirsts() + " out of " + NBR_ROUNDS + 
+					" rounds (win rate = " + bmbWinRate + ")");
+		}
+		assertTrue("Basic Melee Bot should have a win rate of at least 75% against SpinBot",
+				bmbWinRate >= THRESHOLD);
 	}
 	
 }

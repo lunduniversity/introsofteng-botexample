@@ -68,21 +68,6 @@ public class BasicMeleeBot extends TeamRobot {
 	}
 	
 	/**
-	 * onMessageReceived:  What to do when our leader sends a message.
-	 */
-	public void onMessageReceived(MessageEvent e) {
-		// Set our colors
-		if (e.getMessage() instanceof RobotColors) {
-			RobotColors c = (RobotColors) e.getMessage();
-			setBodyColor(c.bodyColor);
-			setGunColor(c.gunColor);
-			setRadarColor(c.radarColor);
-			setScanColor(c.scanColor);
-			setBulletColor(c.bulletColor);
-		}
-	}
-	
-	/**
 	 * Describes the action taken when a robot has been scanned.
 	 * 
 	 * @param event The ScannedRobotEvent provided by Robocode.
@@ -104,5 +89,20 @@ public class BasicMeleeBot extends TeamRobot {
 	@Override
 	public void onRobotDeath(RobotDeathEvent event) {
 		enemyTracker.removeEnemy(event.getName());
+	}
+	
+	/**
+	 * onMessageReceived:  What to do when our leader sends a message.
+	 */
+	public void onMessageReceived(MessageEvent e) {
+		// Set our colors
+		if (e.getMessage() instanceof RobotColors) {
+			RobotColors c = (RobotColors) e.getMessage();
+			setBodyColor(c.bodyColor);
+			setGunColor(c.gunColor);
+			setRadarColor(c.radarColor);
+			setScanColor(c.scanColor);
+			setBulletColor(c.bulletColor);
+		}
 	}
 }
