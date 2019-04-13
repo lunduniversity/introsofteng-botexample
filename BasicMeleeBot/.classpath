@@ -10,10 +10,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="libs/robocode.testing.jar"/>
-	<classpathentry kind="lib" path="libs/robocode.battle-1.9.3.2.jar"/>
-	<classpathentry kind="lib" path="libs/robocode.core-1.9.3.2.jar"/>
-	<classpathentry kind="lib" path="libs/robocode.host-1.9.3.2.jar"/>
-	<classpathentry kind="lib" path="libs/robocode.repository-1.9.3.2.jar"/>
-	<classpathentry kind="lib" path="libs/robocode.ui-1.9.3.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
