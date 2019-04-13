@@ -141,8 +141,8 @@ public class ST_F1_RadarSystem extends RobotTestBed {
 	 */
 	@Override
 	public void onBattleCompleted(BattleCompletedEvent event) {
-		// ETSA02 Lab 3: Remove this assertion and implement a proper test case.
-		assertTrue("ST_F1_RadarSystem not implemented yet", false);
+		// ETSA02 Lab 3: If time permits, implement a system test case for the spinning radar.
+		throw new UnsupportedOperationException("To be implemented in Lab3");
 	}
 	
 	/**

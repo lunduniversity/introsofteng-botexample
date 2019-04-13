@@ -148,8 +148,8 @@ public class ST_F4_WallAvoidance extends RobotTestBed {
 	 */
 	@Override
 	public void onBattleCompleted(BattleCompletedEvent event) {
-		// ETSA02 Lab 3: Remove this assertion and implement a proper test case.
-		assertTrue("ST_F4_WallAvoidance not implemented yet", false);
+		// ETSA02 Lab 3: Implement a system test case for wall avoidance.
+		throw new UnsupportedOperationException("To be implemented in Lab3");
 	}
 	
 	/**

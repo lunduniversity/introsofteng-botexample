@@ -53,7 +53,7 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SittingDuck";
 	private int NBR_ROUNDS = 100;
-	private double THRESHOLD = 0.60; // percentage of rounds with average distance > start distance
+	private double THRESHOLD = 0.53; // percentage of rounds with average distance > start distance
 	private double IMMOBILE_TURNS_LIMIT = 25; // maximum turns without moving
 	private boolean PRINT_DEBUG = false;
 			
