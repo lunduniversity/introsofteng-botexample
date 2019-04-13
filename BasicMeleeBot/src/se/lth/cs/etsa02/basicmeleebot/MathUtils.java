@@ -28,7 +28,6 @@ import java.awt.geom.Point2D;
 
 import robocode.Robot;
 import robocode.ScannedRobotEvent;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class MathUtils {
 	

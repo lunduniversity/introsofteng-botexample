@@ -24,7 +24,7 @@ SOFTWARE.
 
 package se.lth.cs.etsa02.basicmeleebot;
 
-import robocode.AdvancedRobot;
+import robocode.TeamRobot;
 import robocode.RobotDeathEvent;
 import robocode.ScannedRobotEvent;
 
