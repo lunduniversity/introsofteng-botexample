@@ -10,12 +10,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="libs/robocode.testing.jar"/>
-	<classpathentry kind="lib" path="F:/robocode-1.9.3.5/libs/robocode.battle-1.9.3.5.jar"/>
-	<classpathentry kind="lib" path="F:/robocode-1.9.3.5/libs/robocode.core-1.9.3.5.jar"/>
-	<classpathentry kind="lib" path="F:/robocode-1.9.3.5/libs/robocode.host-1.9.3.5.jar"/>
-	<classpathentry kind="lib" path="F:/robocode-1.9.3.5/libs/robocode.repository-1.9.3.5.jar"/>
-	<classpathentry kind="lib" path="F:/robocode-1.9.3.5/libs/robocode.sound-1.9.3.5.jar"/>
-	<classpathentry kind="lib" path="F:/robocode-1.9.3.5/libs/robocode.ui.editor-1.9.3.5.jar"/>
-	<classpathentry kind="lib" path="F:/robocode-1.9.3.5/libs/robocode.ui-1.9.3.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
