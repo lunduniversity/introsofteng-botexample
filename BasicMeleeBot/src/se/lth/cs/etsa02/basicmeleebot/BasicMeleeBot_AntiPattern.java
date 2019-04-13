@@ -27,6 +27,7 @@ package se.lth.cs.etsa02.basicmeleebot;
 import java.awt.geom.Point2D;
 
 import robocode.TeamRobot;
+import robocode.MessageEvent;
 import robocode.RobotDeathEvent;
 import robocode.ScannedRobotEvent;
 import robocode.util.Utils;
@@ -169,6 +170,22 @@ public class BasicMeleeBot_AntiPattern extends TeamRobot {
 				enemyPositions[i-1] = enemyPositions[i];
 			}
 			enemyCount--;
+		}
+	}
+	
+	/**
+	 * onMessageReceived: What to do when our leader sends a message
+	 */
+	@Override
+	public void onMessageReceived(MessageEvent e) {
+		// Set our colors
+		if (e.getMessage() instanceof RobotColors) {
+			RobotColors c = (RobotColors) e.getMessage();
+			setBodyColor(c.bodyColor);
+			setGunColor(c.gunColor);
+			setRadarColor(c.radarColor);
+			setScanColor(c.scanColor);
+			setBulletColor(c.bulletColor);
 		}
 	}
 	

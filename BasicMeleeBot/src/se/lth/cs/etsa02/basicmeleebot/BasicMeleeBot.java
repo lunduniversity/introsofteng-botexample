@@ -25,6 +25,7 @@ SOFTWARE.
 package se.lth.cs.etsa02.basicmeleebot;
 
 import robocode.TeamRobot;
+import robocode.MessageEvent;
 import robocode.RobotDeathEvent;
 import robocode.ScannedRobotEvent;
 
@@ -83,5 +84,21 @@ public class BasicMeleeBot extends TeamRobot {
 	@Override
 	public void onRobotDeath(RobotDeathEvent e) {
 		enemyTracker.removeEnemy(e.getName());
+	}
+	
+	/**
+	 * onMessageReceived: What to do when our leader sends a message
+	 */
+	@Override
+	public void onMessageReceived(MessageEvent e) {
+		// Set our colors
+		if (e.getMessage() instanceof RobotColors) {
+			RobotColors c = (RobotColors) e.getMessage();
+			setBodyColor(c.bodyColor);
+			setGunColor(c.gunColor);
+			setRadarColor(c.radarColor);
+			setScanColor(c.scanColor);
+			setBulletColor(c.bulletColor);
+		}
 	}
 }
