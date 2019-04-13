@@ -32,9 +32,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import robocode.BattleResults;
 import robocode.control.events.BattleCompletedEvent;
-import robocode.control.events.RoundEndedEvent;
-import robocode.control.events.RoundStartedEvent;
-import robocode.control.events.TurnEndedEvent;
 import robocode.control.testing.RobotTestBed;
 
 /**
@@ -47,7 +44,7 @@ import robocode.control.testing.RobotTestBed;
 public class ST_Q_MeleeSpinBots extends RobotTestBed {
 	
 	// constants used to configure this system test case
-	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.BasicMeleeBot*";
+	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SpinBot,sample.SpinBot,sample.SpinBot";
 	private int NBR_ROUNDS = 100;
 	private double THRESHOLD = 0.33; // win rate in melee battles against 3 SpinBots
@@ -125,6 +122,7 @@ public class ST_Q_MeleeSpinBots extends RobotTestBed {
 	 */
 	@Override
 	protected void runSetup() {
+		// Default does nothing.
 	}
 
 	/**
@@ -134,52 +132,35 @@ public class ST_Q_MeleeSpinBots extends RobotTestBed {
 	 */
 	@Override
 	protected void runTeardown() {
+		// Default does nothing.
 	}
 	
 	/**
-	 * Called after the battle. Provided here to show that you could use this
-	 * method as part of your testing.
+	 * Tests to see if our robot won most rounds.
 	 * 
 	 * @param event
 	 *            Holds information about the battle has been completed.
 	 */
 	@Override
 	public void onBattleCompleted(BattleCompletedEvent event) {
-		// ETSA02 Lab 3: Remove this assertion and implement a proper test case.
-		assertTrue("ST_Q_MeleeSpinBots not implemented yet", false);
+		// all battle results
+		BattleResults[] battleResults = event.getIndexedResults();
+		// BMB results
+		BattleResults bmbResults = battleResults[0];
+
+		// check that BMB won the overall battle
+		String robotName = bmbResults.getTeamLeaderName();		
+		assertEquals("Basic Melee Bot should be first in the results array",
+				"se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*", robotName);
+		
+		// check that the required win rate has been reached
+		double bmbWinRate = (((double) bmbResults.getFirsts()) / NBR_ROUNDS);
+		
+		if (PRINT_DEBUG) {
+			System.out.println("BMB won " + bmbResults.getFirsts() + " out of " + NBR_ROUNDS + 
+					" rounds (win rate = " + bmbWinRate + ")");
+		}
+		assertTrue("Basic Melee Bot should have a win rate of at least 33% in this melee battle",
+				bmbWinRate >= THRESHOLD);
 	}
-	
-	/**
-	 * Called before each round. Provided here to show that you could use this
-	 * method as part of your testing.
-	 * 
-	 * @param event
-	 *            The RoundStartedEvent.
-	 */
-	@Override
-	public void onRoundStarted(RoundStartedEvent event) {
-	}
-	
-	/**
-	 * Called after each round. Provided here to show that you could use this
-	 * method as part of your testing.
-	 * 
-	 * @param event
-	 *            The RoundEndedEvent.
-	 */
-	@Override
-	public void onRoundEnded(RoundEndedEvent event) {
-	}
-	
-	/**
-	 * Called after each turn. Provided here to show that you could use this
-	 * method as part of your testing.
-	 * 
-	 * @param event
-	 *            The TurnEndedEvent.
-	 */
-	@Override
-	public void onTurnEnded(TurnEndedEvent event) {
-	}
-	
 }
