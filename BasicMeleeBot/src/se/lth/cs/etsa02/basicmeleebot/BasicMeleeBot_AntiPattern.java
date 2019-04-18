@@ -24,13 +24,13 @@ SOFTWARE.
 
 package se.lth.cs.etsa02.basicmeleebot;
 
-import java.awt.geom.Point2D;
-
+import se.lth.cs.etsa02.RobotColors;
 import robocode.TeamRobot;
 import robocode.MessageEvent;
 import robocode.RobotDeathEvent;
 import robocode.ScannedRobotEvent;
 import robocode.util.Utils;
+import java.awt.geom.Point2D;
 
 /**
  * @author David Phung
