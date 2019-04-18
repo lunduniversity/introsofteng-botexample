@@ -24,6 +24,7 @@ SOFTWARE.
 
 package se.lth.cs.etsa02.basicmeleebot;
 
+import se.lth.cs.etsa02.RobotColors;
 import robocode.TeamRobot;
 import robocode.MessageEvent;
 import robocode.RobotDeathEvent;

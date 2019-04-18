@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://robocode.sourceforge.net/license/epl-v10.html
  */
-package se.lth.cs.etsa02.basicmeleebot;
+package se.lth.cs.etsa02;
 
 import java.awt.*;
 
