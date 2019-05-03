@@ -51,7 +51,7 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SpinBot";
 	private int NBR_ROUNDS = 100;
-	private double THRESHOLD = 0.75; // win rate against SpinBot
+	private double THRESHOLD = 0.51; // win rate against SpinBot
 	private boolean PRINT_DEBUG = true;
 		
 	/**
