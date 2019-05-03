@@ -47,7 +47,7 @@ public class ST_Q_MeleeSpinBots extends RobotTestBed {
 	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SpinBot,sample.SpinBot,sample.SpinBot";
 	private int NBR_ROUNDS = 100;
-	private double THRESHOLD = 0.33; // win rate in melee battles against 3 SpinBots
+	private double THRESHOLD = 0.26; // win rate in melee battles against 3 SpinBots
 	private boolean PRINT_DEBUG = false;
 		
 	/**
@@ -160,7 +160,7 @@ public class ST_Q_MeleeSpinBots extends RobotTestBed {
 			System.out.println("BMB won " + bmbResults.getFirsts() + " out of " + NBR_ROUNDS + 
 					" rounds (win rate = " + bmbWinRate + ")");
 		}
-		assertTrue("Basic Melee Bot should have a win rate of at least 33% in this melee battle",
+		assertTrue("Basic Melee Bot should have a win rate of at least 26% in this melee battle",
 				bmbWinRate >= THRESHOLD);
 	}
 }
