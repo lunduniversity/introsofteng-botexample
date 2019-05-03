@@ -160,7 +160,7 @@ public class ST_Q_MeleeSpinBots extends RobotTestBed {
 			System.out.println("BMB won " + bmbResults.getFirsts() + " out of " + NBR_ROUNDS + 
 					" rounds (win rate = " + bmbWinRate + ")");
 		}
-		assertTrue("Basic Melee Bot should have a win rate of at least 33% in this melee battle",
+		assertTrue("Basic Melee Bot should have a win rate of at least 26% in this melee battle",
 				bmbWinRate >= THRESHOLD);
 	}
 }
