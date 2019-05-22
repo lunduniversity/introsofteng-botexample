@@ -7,7 +7,7 @@ This repository contains the source code needed to complete the ETSA02 lab exerc
 - before-lab3: Contains an example solution for Lab 2, thus can act as a starting point for Lab 3.
 - before-lab4: Contains example solutions for Labs 2 and 3, thus can act as a starting point for Lab 4 and the projects.
 
-This repository can act as a good starting point for the projects. The functionality of the robot will be implemented during Lab 2 and Lab 3. Note that the repository contains four additional classes (excluded in the build) that might be useful if you plan to evolve this robot into an ETSA02 project for the LU Rumble:
+This repository can act as a good starting point for the projects. The functionality of the robot will be implemented during Lab 2 and Lab 3. Note that the repository contains two additional classes (excluded in the build) that might be useful if you plan to evolve this robot into an ETSA02 project for the LU Rumble:
 
 - MessageReader: Prototype implementation to read ETSA02 RoboTalk messages.
 - MessageWriter: Prototype implementation to write ETSA02 RoboTalk messages.
