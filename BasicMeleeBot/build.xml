@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="BasicMeleeBot">
+    <property environment="env"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="../../../Users/Markus Borg/.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../../Users/Markus Borg/.p2/pool/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+    </path>
+    <path id="BasicMeleeBot.classpath">
+        <pathelement location="bin"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="libs/picocontainer-2.14.2.jar"/>
+        <pathelement location="libs/robocode.jar"/>
+        <pathelement location="libs/robocode.testing.jar"/>
+        <pathelement location="libs/robocode.battle-1.9.3.5.jar"/>
+        <pathelement location="libs/robocode.core-1.9.3.5.jar"/>
+        <pathelement location="libs/robocode.host-1.9.3.5.jar"/>
+        <pathelement location="libs/robocode.repository-1.9.3.5.jar"/>
+        <pathelement location="libs/robocode.sound-1.9.3.5.jar"/>
+        <pathelement location="libs/robocode.ui-1.9.3.5.jar"/>
+        <pathelement location="libs/robocode.ui.editor-1.9.3.5.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+                <exclude name="se/lth/cs/etsa02/basicmeleebot/Point.java"/>
+                <exclude name="se/lth/cs/etsa02/basicmeleebot/MessageReader.java"/>
+                <exclude name="se/lth/cs/etsa02/basicmeleebot/MessageWriter.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <exclude name="se/lth/cs/etsa02/basicmeleebot/Point.java"/>
+            <exclude name="se/lth/cs/etsa02/basicmeleebot/MessageReader.java"/>
+            <exclude name="se/lth/cs/etsa02/basicmeleebot/MessageWriter.java"/>
+            <classpath refid="BasicMeleeBot.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="BMBSystemTestSuite">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="se.lth.cs.etsa02.basicmeleebot.test.BMBSystemTestSuite" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea -Drobocode.home=C:\robocode_1.9.3.5"/>
+            <classpath refid="BasicMeleeBot.classpath"/>
+        </junit>
+    </target>
+    <target name="BMBUnitTestSuite">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="se.lth.cs.etsa02.basicmeleebot.test.BMBUnitTestSuite" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="BasicMeleeBot.classpath"/>
+        </junit>
+    </target>
+    <target name="EnemyTrackerTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="se.lth.cs.etsa02.basicmeleebot.test.EnemyTrackerTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="BasicMeleeBot.classpath"/>
+        </junit>
+    </target>
+    <target name="PositioningSystemTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="se.lth.cs.etsa02.basicmeleebot.test.PositioningSystemTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="BasicMeleeBot.classpath"/>
+        </junit>
+    </target>
+    <target name="ST_F2_ClosestEnemyTargeting">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="se.lth.cs.etsa02.basicmeleebot.test.ST_F2_ClosestEnemyTargeting" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea -Drobocode.home=C:\robocode_1.9.3.5"/>
+            <classpath refid="BasicMeleeBot.classpath"/>
+        </junit>
+    </target>
+    <target name="ST_Q_MeleeSpinBots">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="se.lth.cs.etsa02.basicmeleebot.test.ST_Q_MeleeSpinBots" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="BasicMeleeBot.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
