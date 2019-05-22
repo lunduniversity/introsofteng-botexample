@@ -11,7 +11,6 @@ This repository can act as a good starting point for the projects. The functiona
 
 - MessageReader: Prototype implementation to read ETSA02 RoboTalk messages.
 - MessageWriter: Prototype implementation to write ETSA02 RoboTalk messages.
-- Point: Serializable class to communicate positions in ETSA02 RoboTalk.
 ## License
 
 Copyright © 2018-2019. Dept. of Computer Science at Lund University, Lund, Sweden.
