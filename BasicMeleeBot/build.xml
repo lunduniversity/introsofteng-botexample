@@ -9,13 +9,10 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
-    <path id="JUnit 4.libraryclasspath">
-        <pathelement location="../../../Users/Markus Borg/.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
-        <pathelement location="../../../Users/Markus Borg/.p2/pool/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
-    </path>
     <path id="BasicMeleeBot.classpath">
+        <pathelement location="libs/hamcrest-core-1.3.jar"/>
+        <pathelement location="libs/junit-4.12.jar"/>
         <pathelement location="bin"/>
-        <path refid="JUnit 4.libraryclasspath"/>
         <pathelement location="libs/picocontainer-2.14.2.jar"/>
         <pathelement location="libs/robocode.jar"/>
         <pathelement location="libs/robocode.testing.jar"/>
@@ -27,12 +24,35 @@
         <pathelement location="libs/robocode.ui-1.9.3.5.jar"/>
         <pathelement location="libs/robocode.ui.editor-1.9.3.5.jar"/>
     </path>
+    <path id="run.BMBSystemTestSuite.classpath">
+        <path refid="BasicMeleeBot.classpath"/>
+    </path>
+    <path id="run.BMBSystemTestSuite.bootclasspath"/>
+    <path id="run.BMBUnitTestSuite.classpath">
+        <path refid="BasicMeleeBot.classpath"/>
+    </path>
+    <path id="run.BMBUnitTestSuite.bootclasspath"/>
+    <path id="run.EnemyTrackerTest.classpath">
+        <path refid="BasicMeleeBot.classpath"/>
+    </path>
+    <path id="run.EnemyTrackerTest.bootclasspath"/>
+    <path id="run.PositioningSystemTest.classpath">
+        <path refid="BasicMeleeBot.classpath"/>
+    </path>
+    <path id="run.PositioningSystemTest.bootclasspath"/>
+    <path id="run.ST_F2_ClosestEnemyTargeting.classpath">
+        <path refid="BasicMeleeBot.classpath"/>
+    </path>
+    <path id="run.ST_F2_ClosestEnemyTargeting.bootclasspath"/>
+    <path id="run.ST_Q_MeleeSpinBots.classpath">
+        <path refid="BasicMeleeBot.classpath"/>
+    </path>
+    <path id="run.ST_Q_MeleeSpinBots.bootclasspath"/>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
                 <exclude name="**/*.java"/>
-                <exclude name="se/lth/cs/etsa02/basicmeleebot/Point.java"/>
                 <exclude name="se/lth/cs/etsa02/basicmeleebot/MessageReader.java"/>
                 <exclude name="se/lth/cs/etsa02/basicmeleebot/MessageWriter.java"/>
             </fileset>
@@ -48,7 +68,6 @@
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
-            <exclude name="se/lth/cs/etsa02/basicmeleebot/Point.java"/>
             <exclude name="se/lth/cs/etsa02/basicmeleebot/MessageReader.java"/>
             <exclude name="se/lth/cs/etsa02/basicmeleebot/MessageWriter.java"/>
             <classpath refid="BasicMeleeBot.classpath"/>
@@ -74,7 +93,10 @@
             <formatter type="xml"/>
             <test name="se.lth.cs.etsa02.basicmeleebot.test.BMBSystemTestSuite" todir="${junit.output.dir}"/>
             <jvmarg line="-ea -Drobocode.home=C:\robocode_1.9.3.5"/>
-            <classpath refid="BasicMeleeBot.classpath"/>
+            <classpath refid="run.BMBSystemTestSuite.classpath"/>
+            <bootclasspath>
+                <path refid="run.BMBSystemTestSuite.bootclasspath"/>
+            </bootclasspath>
         </junit>
     </target>
     <target name="BMBUnitTestSuite">
@@ -83,7 +105,10 @@
             <formatter type="xml"/>
             <test name="se.lth.cs.etsa02.basicmeleebot.test.BMBUnitTestSuite" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
-            <classpath refid="BasicMeleeBot.classpath"/>
+            <classpath refid="run.BMBUnitTestSuite.classpath"/>
+            <bootclasspath>
+                <path refid="run.BMBUnitTestSuite.bootclasspath"/>
+            </bootclasspath>
         </junit>
     </target>
     <target name="EnemyTrackerTest">
@@ -92,7 +117,10 @@
             <formatter type="xml"/>
             <test name="se.lth.cs.etsa02.basicmeleebot.test.EnemyTrackerTest" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
-            <classpath refid="BasicMeleeBot.classpath"/>
+            <classpath refid="run.EnemyTrackerTest.classpath"/>
+            <bootclasspath>
+                <path refid="run.EnemyTrackerTest.bootclasspath"/>
+            </bootclasspath>
         </junit>
     </target>
     <target name="PositioningSystemTest">
@@ -101,7 +129,10 @@
             <formatter type="xml"/>
             <test name="se.lth.cs.etsa02.basicmeleebot.test.PositioningSystemTest" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
-            <classpath refid="BasicMeleeBot.classpath"/>
+            <classpath refid="run.PositioningSystemTest.classpath"/>
+            <bootclasspath>
+                <path refid="run.PositioningSystemTest.bootclasspath"/>
+            </bootclasspath>
         </junit>
     </target>
     <target name="ST_F2_ClosestEnemyTargeting">
@@ -110,7 +141,10 @@
             <formatter type="xml"/>
             <test name="se.lth.cs.etsa02.basicmeleebot.test.ST_F2_ClosestEnemyTargeting" todir="${junit.output.dir}"/>
             <jvmarg line="-ea -Drobocode.home=C:\robocode_1.9.3.5"/>
-            <classpath refid="BasicMeleeBot.classpath"/>
+            <classpath refid="run.ST_F2_ClosestEnemyTargeting.classpath"/>
+            <bootclasspath>
+                <path refid="run.ST_F2_ClosestEnemyTargeting.bootclasspath"/>
+            </bootclasspath>
         </junit>
     </target>
     <target name="ST_Q_MeleeSpinBots">
@@ -119,7 +153,10 @@
             <formatter type="xml"/>
             <test name="se.lth.cs.etsa02.basicmeleebot.test.ST_Q_MeleeSpinBots" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
-            <classpath refid="BasicMeleeBot.classpath"/>
+            <classpath refid="run.ST_Q_MeleeSpinBots.classpath"/>
+            <bootclasspath>
+                <path refid="run.ST_Q_MeleeSpinBots.bootclasspath"/>
+            </bootclasspath>
         </junit>
     </target>
     <target name="junitreport">
