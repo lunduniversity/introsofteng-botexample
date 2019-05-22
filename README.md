@@ -1,4 +1,6 @@
 # introsofteng-botexample
+[![Build Status](https://travis-ci.org/lunduniversity/introsofteng-botexample.svg?branch=master)](https://travis-ci.org/lunduniversity/introsofteng-botexample)
+
 Supplementary teaching material for "Introduction to Software Engineering" at Lund University, LTH. http://cs.lth.se/etsa02/
 
 This repository contains the source code needed to complete the ETSA02 lab exercises, i.e., implementing Basic Melee Bot. The repository contains all dependencies to allow further evolution into the course project. Furthermore, the repository contains three branches:
