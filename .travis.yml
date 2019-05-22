@@ -1,9 +1,9 @@
 language: java
 jdk: oraclejdk8
 
-before_install:
-- cd java
+before_script: 
+sudo apt-get install ant-optional
+cd BasicMeleeBot
 
-before_script: cd BasicMeleeBot
-
-script: ant build
+script:
+ant build
