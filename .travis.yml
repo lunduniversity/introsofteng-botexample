@@ -5,4 +5,7 @@ before_script:
 - sudo apt-get install ant-optional
 - cd BasicMeleeBot
 
-script: ant build
+script: 
+- ant build
+- ant BMBUnitTestSuite
+- ant junitreport

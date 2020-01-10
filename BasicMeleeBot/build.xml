@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="BasicMeleeBot">
+<project basedir="." default="build" name="BasicMeleeBot">
     <property environment="env"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
+    <property name="test.src.dir" value="src/se/lth/cs/etsa02/basicmeleebot/test" />
+    
     <path id="BasicMeleeBot.classpath">
         <pathelement location="bin"/>
+        <pathelement location="libs/picocontainer-2.14.2.jar"/>
+        <pathelement location="libs/robocode.jar"/>
+        <pathelement location="libs/robocode.testing.jar"/>
+        <pathelement location="libs/robocode.battle-1.9.3.5.jar"/>
+        <pathelement location="libs/robocode.core-1.9.3.5.jar"/>
+        <pathelement location="libs/robocode.host-1.9.3.5.jar"/>
+        <pathelement location="libs/robocode.repository-1.9.3.5.jar"/>
+        <pathelement location="libs/robocode.sound-1.9.3.5.jar"/>
+        <pathelement location="libs/robocode.ui-1.9.3.5.jar"/>
+        <pathelement location="libs/robocode.ui.editor-1.9.3.5.jar"/>
+        <pathelement location="libs/hamcrest-core-1.3.jar"/>
+        <pathelement location="libs/junit-4.12.jar"/>
+    </path>
+    <path id="BasicMeleeBot.unittest">
+    	<pathelement location="bin"/>
         <pathelement location="libs/picocontainer-2.14.2.jar"/>
         <pathelement location="libs/robocode.jar"/>
         <pathelement location="libs/robocode.testing.jar"/>
@@ -31,12 +44,12 @@
                 <exclude name="**/*.java"/>
                 <exclude name="se/lth/cs/etsa02/basicmeleebot/MessageReader.java"/>
                 <exclude name="se/lth/cs/etsa02/basicmeleebot/MessageWriter.java"/>
-                <exclude name="se/lth/cs/etsa02/basicmeleebot/Point.java"/>
             </fileset>
         </copy>
     </target>
     <target name="clean">
         <delete dir="bin"/>
+        <delete dir="junit"/>
     </target>
     <target depends="clean" name="cleanall"/>
     <target depends="build-subprojects,build-project" name="build"/>
@@ -47,7 +60,6 @@
             <src path="src"/>
             <exclude name="se/lth/cs/etsa02/basicmeleebot/MessageReader.java"/>
             <exclude name="se/lth/cs/etsa02/basicmeleebot/MessageWriter.java"/>
-            <exclude name="se/lth/cs/etsa02/basicmeleebot/Point.java"/>
             <classpath refid="BasicMeleeBot.classpath"/>
         </javac>
     </target>
@@ -71,7 +83,7 @@
             <formatter type="xml"/>
             <test name="se.lth.cs.etsa02.basicmeleebot.test.BMBSystemTestSuite" todir="${junit.output.dir}"/>
             <jvmarg line="-ea -Drobocode.home=C:\robocode_1.9.3.5"/>
-            <classpath refid="BasicMeleeBot.classpath"/>
+            <classpath refid="BasicMeleeBot.unittest"/>
         </junit>
     </target>
     <target name="BMBUnitTestSuite">
@@ -80,25 +92,7 @@
             <formatter type="xml"/>
             <test name="se.lth.cs.etsa02.basicmeleebot.test.BMBUnitTestSuite" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
-            <classpath refid="BasicMeleeBot.classpath"/>
-        </junit>
-    </target>
-    <target name="EnemyTrackerTest">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="se.lth.cs.etsa02.basicmeleebot.test.EnemyTrackerTest" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="BasicMeleeBot.classpath"/>
-        </junit>
-    </target>
-    <target name="PositioningSystemTest">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="se.lth.cs.etsa02.basicmeleebot.test.PositioningSystemTest" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="BasicMeleeBot.classpath"/>
+            <classpath refid="BasicMeleeBot.unittest"/>
         </junit>
     </target>
     <target name="ST_F2_ClosestEnemyTargeting">
@@ -107,7 +101,7 @@
             <formatter type="xml"/>
             <test name="se.lth.cs.etsa02.basicmeleebot.test.ST_F2_ClosestEnemyTargeting" todir="${junit.output.dir}"/>
             <jvmarg line="-ea -Drobocode.home=C:\robocode_1.9.3.5"/>
-            <classpath refid="BasicMeleeBot.classpath"/>
+            <classpath refid="BasicMeleeBot.unittest"/>
         </junit>
     </target>
     <target name="ST_Q_MeleeSpinBots">
@@ -116,7 +110,7 @@
             <formatter type="xml"/>
             <test name="se.lth.cs.etsa02.basicmeleebot.test.ST_Q_MeleeSpinBots" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
-            <classpath refid="BasicMeleeBot.classpath"/>
+            <classpath refid="BasicMeleeBot.unittest"/>
         </junit>
     </target>
     <target name="junitreport">
@@ -127,4 +121,5 @@
             <report format="frames" todir="${junit.output.dir}"/>
         </junitreport>
     </target>
+    
 </project>
