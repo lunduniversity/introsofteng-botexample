@@ -7,4 +7,3 @@ before_script:
 
 script:
 - ant build
-- ant BMBUnitTestSuite
