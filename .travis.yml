@@ -6,5 +6,5 @@ before_script:
 - cd BasicMeleeBot
 
 script:
-ant build
-ant test
+- ant build
+- ant test
