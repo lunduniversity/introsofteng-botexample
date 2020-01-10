@@ -1,8 +1,9 @@
 language: java
-jdk: oraclejdk8
+jdk: openjdk13
 
 before_script: 
 - sudo apt-get install ant-optional
 - cd BasicMeleeBot
 
-script: ant build
+script: 
+- ant build
