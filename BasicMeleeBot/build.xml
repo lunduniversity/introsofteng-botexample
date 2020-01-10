@@ -24,6 +24,7 @@
     </path>
     <path id="BasicMeleeBot.unittest">
     	<pathelement location="libs/junit-4.12.jar"/>
+        <pathelement location="libs/hamcrest-core-1.3.jar"/>
     	<pathelement location="bin"/>
     </path>
     <target name="init">
