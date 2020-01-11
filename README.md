@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lunduniversity/introsofteng-botexample.svg?branch=before-lab3)](https://travis-ci.org/lunduniversity/introsofteng-botexample)
+
 # introsofteng-botexample
 Supplementary teaching material for "Introduction to Software Engineering" at Lund University, LTH. http://cs.lth.se/etsa02/
 
