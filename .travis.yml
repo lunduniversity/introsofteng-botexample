@@ -6,6 +6,8 @@ jdk:
 
 before_install:
  - cd BasicBots
+ - pwd
+ - ls -la
  - chmod +x gradlew
   
 script:
