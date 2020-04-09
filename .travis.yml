@@ -1,9 +1,12 @@
-language: java
-jdk: openjdk13
+language: 
+ - java
 
-before_script: 
-- sudo apt-get install ant-optional
-- cd BasicMeleeBot
+jdk: 
+ - openjdk13
 
+before_install:
+ - cd BasicBots
+ - chmod +x gradlew
+  
 script:
-- ant build
+ - ./gradlew build
