@@ -1,11 +1,17 @@
-language: java
-jdk: openjdk13
+install: 
+ - gradle wrapper --gradle-version 5.1.1
 
-before_script: 
-- sudo apt-get install ant-optional
-- cd BasicMeleeBot
+language: 
+ - java
 
-script: 
-- ant build
-- ant BMBUnitTestSuite
-- ant junitreport
+jdk: 
+ - openjdk8
+
+before_install:
+ - cd BasicBots
+ - pwd
+ - ls -la
+ - chmod +x gradlew
+  
+script:
+ - ./gradlew build
