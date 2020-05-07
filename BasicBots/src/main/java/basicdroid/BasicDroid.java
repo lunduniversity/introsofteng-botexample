@@ -21,13 +21,13 @@ SOFTWARE.
 package basicdroid;
 
 import etsa03.*;
-
-
 import robocode.Droid;
 import robocode.MessageEvent;
 import robocode.TeamRobot;
 import robocode.util.Utils;
 import static robocode.util.Utils.normalRelativeAngleDegrees;
+
+import java.awt.geom.Point2D;
 import java.io.IOException;
 
 import robocode.BulletHitEvent;
@@ -116,7 +116,7 @@ public class BasicDroid extends TeamRobot implements Droid {
 	 * The code comes from <a href="http://robowiki.net/wiki/GoTo"> http://robowiki.net/wiki/GoTo </a>
 	 * @param destination coordinates of the destination
 	 */
-	private void goTo(Point destination) {
+	private void goTo(Point2D.Double destination) {
 		/* Transform our coordinates into a vector */
 		double x = destination.getX();
 		double y = destination.getY();
