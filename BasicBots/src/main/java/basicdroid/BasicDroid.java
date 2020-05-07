@@ -25,12 +25,11 @@ import robocode.Droid;
 import robocode.MessageEvent;
 import robocode.TeamRobot;
 import robocode.util.Utils;
+
 import static robocode.util.Utils.normalRelativeAngleDegrees;
 
 import java.awt.geom.Point2D;
 import java.io.IOException;
-
-import robocode.BulletHitEvent;
 
 
 /**
@@ -45,7 +44,13 @@ public class BasicDroid extends TeamRobot implements Droid {
 	 * run:  Droid's default behavior
 	 */
 	public void run() {
-		out.println("MyFirstDroid ready.");
+		out.println("BasicDroid ready.");
+		try {
+			// Declare to team that this bot is a follower
+			MessageWriter writer = new MessageWriter();
+			writer.addLeadership("leadMe");
+			broadcastMessage(writer.composeMessage());
+		} catch (IOException ignored) {}
 	}
 
 	/**
@@ -62,43 +67,37 @@ public class BasicDroid extends TeamRobot implements Droid {
 			setBulletColor(c.bulletColor);
 		} else {
 			MessageReader reader = new MessageReader((String)e.getMessage());
-			if (reader.getMoveTo() != null) goTo(reader.getMoveTo());
+			if (reader.getMoveTo() != null) {
+				goTo(reader.getMoveTo());
+			}
+			if (reader.getTargetPos() != null) {
+				fireAtPoint(reader.getTargetPos());
+			}
 			
 			// If enemy position, fire!
 			String[] values = reader.getEnemyDetails();
 			if (values.length > 0) {
 				String[] ss = values[0].split(";");
-				Point p = null;
+				Point2D.Double p = null;
 				try {
 					double energy = Double.parseDouble(ss[4]);
 					if (energy <= 0) {
 						return;
 					}
-					int x = Integer.parseInt(ss[1]);
-					int y = Integer.parseInt(ss[2]);
-					p = new Point(x,y);
+					double x = Double.parseDouble(ss[1]);
+					double y = Double.parseDouble(ss[2]);
+					p = new Point2D.Double(x,y);
 				} catch (RuntimeException err) {}
-				if (p != null) fireAtPoint(p);
+				if (p != null) {
+					fireAtPoint(p);
+				} else {
+				}
 			}
 		}
 	}
+
 	
-	/**
-	 * onHitBullet:  What to do when out bullet hits a robot
-	 */
-	@SuppressWarnings("unused")
-	private void onHitBullet(BulletHitEvent e) {
-		if (e.getEnergy() <= 0) {
-			try {
-				// Message allies that enemy bot is dead
-				MessageWriter writer = new MessageWriter();
-				writer.addEnemyDetails(e.getName(), 0, 0, 0, e.getEnergy(), 0, 0);
-				broadcastMessage(writer.composeMessage());
-			} catch (IOException ignored) {}
-		}
-	}
-	
-	private void fireAtPoint(Point p) {
+	private void fireAtPoint(Point2D.Double p) {
 		// Calculate x and y to target
 		double dx = p.getX() - this.getX();
 		double dy = p.getY() - this.getY();
@@ -110,6 +109,7 @@ public class BasicDroid extends TeamRobot implements Droid {
 		// Fire hard!
 		fire(3);
 	}
+	
 	
 	/**
 	 * Set the robot to go to a certain point. 

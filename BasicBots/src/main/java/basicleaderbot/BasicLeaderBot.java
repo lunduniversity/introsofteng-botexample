@@ -23,18 +23,18 @@ SOFTWARE.
 */
 package basicleaderbot;
 
+import etsa03.*;
 import robocode.HitByBulletEvent;
 import robocode.MessageEvent;
 import robocode.RobotDeathEvent;
 import robocode.ScannedRobotEvent;
 import robocode.TeamRobot;
-import etsa03.*;
+
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
-
 /**
- * BasicLeaderBot (BLB) - a sample team robot for ETSA03.
+ * BasicLeaderBot (BLB) - a sample team robot for ETSA02.
  * 
  * Looks around for enemies, and orders team mates to fire.
  * If hit by a bullet, it sometimes changes its motvement.
