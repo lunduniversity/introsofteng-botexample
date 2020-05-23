@@ -58,7 +58,7 @@ public class BasicLeaderBot extends TeamRobot {
 	 * run:  BLB's new behavior, improved by Teodor Ahlinder (2020)
 	 */
 	public void run() {
-		out.println("BasicLeaderBot ready.");
+		System.out.println("BasicLeaderBot ready.");
 		// ----------------------------------------------
 		// ------------- Starting behavior --------------
 		// ----------------------------------------------
