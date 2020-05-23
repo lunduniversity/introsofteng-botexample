@@ -52,13 +52,13 @@ public class BasicLeaderBot extends TeamRobot {
 	private ArrayList<DummyRobot> knownEnemyRobots;
 	private ArrayList<DummyRobot> knownAlliedRobots;
 	
-	private static final boolean PRINT_DEBUG = true;
+	private static final boolean PRINT_DEBUG = false;
 	
 	/**
 	 * run:  BLB's new behavior, improved by Teodor Ahlinder (2020)
 	 */
 	public void run() {
-		out.println("BasicLeaderBot ready.");
+		System.out.println("BasicLeaderBot ready.");
 		// ----------------------------------------------
 		// ------------- Starting behavior --------------
 		// ----------------------------------------------
@@ -142,7 +142,7 @@ public class BasicLeaderBot extends TeamRobot {
 			}
 			broadcastMessage(writer.composeMessage());
 		} catch (IOException ex) {
-			out.println("Unable to send order: ");
+			System.out.println("Unable to send order: ");
 			ex.printStackTrace(out);
 		}
 	}
