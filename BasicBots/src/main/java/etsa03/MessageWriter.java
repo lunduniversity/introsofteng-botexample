@@ -114,6 +114,7 @@ public class MessageWriter {
 		enemyDetails[enemyDetailsCount] = "enemyDetails;" + name + ";" + x + ";" + y + ";" + velocity + ";" + energy + ";" + heading + ";" + gunHeading;
 		enemyDetailsCount++;
 	}
+	
 	/**
 	 * Add the targetEnemy line.
 	 * @param x

@@ -155,7 +155,7 @@ public class BasicLeaderBot extends TeamRobot {
 	private int updateList(DummyRobot r, ArrayList<DummyRobot> list) {
 		for (int i = 0; i < list.size(); i++) {
 			DummyRobot robot = list.get(i);
-			if (r.getName() == robot.getName()) {
+			if (r.getName().equals(robot.getName())) {
 				if (r.getEnergy() <= 0) {
 					if (PRINT_DEBUG) {
 						System.out.println("lists: energy 0, remove " + r.getName());
@@ -168,7 +168,7 @@ public class BasicLeaderBot extends TeamRobot {
 			}
 		}
 		for (DummyRobot robot : list) {
-			if (r.getName() == robot.getName()) {
+			if (r.getName().equals(robot.getName())) {
 				robot = r;
 				return 0;
 			}
@@ -203,14 +203,14 @@ public class BasicLeaderBot extends TeamRobot {
 		String name = e.getName();
 		if (isTeammate(name)) {
 			for (int i = 0; i < knownAlliedRobots.size(); i++) {
-				if (e.getName() == knownAlliedRobots.get(i).getName()) {
+				if (e.getName().equals(knownAlliedRobots.get(i).getName())) {
 					knownAlliedRobots.remove(i);
 					return;
 				}
 			}
 		} else {
 			for (int i = 0; i < knownEnemyRobots.size(); i++) {
-				if (e.getName() == knownEnemyRobots.get(i).getName()) {
+				if (e.getName().equals(knownEnemyRobots.get(i).getName())) {
 					knownEnemyRobots.remove(i);
 					return;
 				}
