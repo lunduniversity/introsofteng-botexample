@@ -142,7 +142,7 @@ public class BasicLeaderBot extends TeamRobot {
 			}
 			broadcastMessage(writer.composeMessage());
 		} catch (IOException ex) {
-			out.println("Unable to send order: ");
+			System.out.println("Unable to send order: ");
 			ex.printStackTrace(out);
 		}
 	}
