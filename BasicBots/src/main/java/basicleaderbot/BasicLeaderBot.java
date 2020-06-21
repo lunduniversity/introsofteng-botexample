@@ -55,17 +55,16 @@ public class BasicLeaderBot extends TeamRobot {
 	private static final boolean PRINT_DEBUG = false;
 	
 	/**
-	 * run:  BLB's new behavior, improved by Teodor Ahlinder (2020)
+	 * run: BLB's new behavior, improved by Teodor Ahlinder (2020)
 	 */
 	public void run() {
-		System.out.println("BasicLeaderBot ready.");
 		// ----------------------------------------------
 		// ------------- Starting behavior --------------
 		// ----------------------------------------------
-		
 		// ------------- Configuring lists --------------
 		knownEnemyRobots = new ArrayList<DummyRobot>();
 		knownAlliedRobots = new ArrayList<DummyRobot>();
+		System.out.println("BasicLeaderBot ready.");
 		
 		// ---------- Asserting leader control ----------
 		try {
@@ -73,6 +72,9 @@ public class BasicLeaderBot extends TeamRobot {
 			MessageWriter writer = new MessageWriter();
 			writer.addLeadership("followMe");
 			broadcastMessage(writer.composeMessage());
+			if (PRINT_DEBUG) {
+				System.out.println("BasicLeaderBot has taken command of its team.");
+			}
 		} catch (IOException ignored) {}
 		
 		// ----------- Setting team colors --------------
@@ -82,6 +84,9 @@ public class BasicLeaderBot extends TeamRobot {
 		c.radarColor = RADARCOLOR;
 		c.scanColor = SCANCOLOR;
 		c.bulletColor = BULLETCOLOR;
+		if (PRINT_DEBUG) {
+			System.out.println("RobotColors object created: " + c.toString());
+		}
 
 		// Set the color of BLB
 		setBodyColor(c.bodyColor);
@@ -89,10 +94,16 @@ public class BasicLeaderBot extends TeamRobot {
 		setRadarColor(c.radarColor);
 		setScanColor(c.scanColor);
 		setBulletColor(c.bulletColor);
+		if (PRINT_DEBUG) {
+			System.out.println("BasicLeaderBot's colors set.");
+		}
 		try {
 			// Send RobotColors object to the entire team
 			broadcastMessage(c);
-		} catch (IOException ignored) {
+			if (PRINT_DEBUG) {
+				System.out.println("BasicLeaderBot has broadcast colors to the team.");
+			}
+		} catch (IOException exc) {
 			System.out.println("Could not broadcast team colors.");
 		}
 		

@@ -40,11 +40,13 @@ import java.io.IOException;
  */
 public class BasicDroid extends TeamRobot implements Droid {
 
+	private static final boolean PRINT_DEBUG = false;
+
 	/**
 	 * run:  Droid's default behavior
 	 */
 	public void run() {
-		out.println("BasicDroid ready.");
+		System.out.println("BasicDroid ready.");
 		try {
 			// Declare to team that this bot is a follower
 			MessageWriter writer = new MessageWriter();
@@ -59,12 +61,18 @@ public class BasicDroid extends TeamRobot implements Droid {
 	public void onMessageReceived(MessageEvent e) {
 		// Set our colors
 		if (e.getMessage() instanceof RobotColors) {
+			if (PRINT_DEBUG) {
+				System.out.println("BasicDroid's colors received from the leader.");
+			}
 			RobotColors c = (RobotColors) e.getMessage();
 			setBodyColor(c.bodyColor);
 			setGunColor(c.gunColor);
 			setRadarColor(c.radarColor);
 			setScanColor(c.scanColor);
 			setBulletColor(c.bulletColor);
+			if (PRINT_DEBUG) {
+				System.out.println("BasicDroid's colors have been set.");
+			}
 		} else {
 			MessageReader reader = new MessageReader((String)e.getMessage());
 			if (reader.getMoveTo() != null) {
