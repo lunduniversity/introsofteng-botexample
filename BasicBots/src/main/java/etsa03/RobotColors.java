@@ -18,8 +18,6 @@ import java.awt.*;
 public class RobotColors implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
-
-	/* Tjo */
 	
 	public Color bodyColor;
 	public Color gunColor;

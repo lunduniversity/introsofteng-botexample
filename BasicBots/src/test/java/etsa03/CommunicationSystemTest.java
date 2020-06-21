@@ -27,6 +27,8 @@ package etsa03;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.awt.geom.Point2D;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -53,7 +55,7 @@ public class CommunicationSystemTest {
 		writer.addLeadership(s);
 		reader = new MessageReader(writer.composeMessage());
 		String check = reader.getLeadership();
-		assertTrue("Check that sent string is identical to recieved string", s.compareTo(check) == 0); 
+		assertTrue("Check that sent string is identical to received string", s.compareTo(check) == 0); 
 	}
 	
 	@Test
@@ -62,7 +64,7 @@ public class CommunicationSystemTest {
 		writer.addTeamMode(s);
 		reader = new MessageReader(writer.composeMessage());
 		String check = reader.getTeamMode();
-		assertTrue("Check that sent string is identical to recieved string", s.compareTo(check) == 0); 
+		assertTrue("Check that sent string is identical to received string", s.compareTo(check) == 0); 
 	}
 	
 	@Test
@@ -72,8 +74,8 @@ public class CommunicationSystemTest {
 		writer.addMyPos(x, y);
 		reader = new MessageReader(writer.composeMessage());
 		String[] check = reader.getMyPos();
-		assertTrue("Check that sent x is identical to recieved x", x == Double.parseDouble(check[0])); 
-		assertTrue("Check that sent y is identical to recieved y", y == Double.parseDouble(check[1])); 
+		assertTrue("Check that sent x is identical to received x", x == Double.parseDouble(check[0])); 
+		assertTrue("Check that sent y is identical to received y", y == Double.parseDouble(check[1])); 
 	}
 	
 	@Test
@@ -84,9 +86,9 @@ public class CommunicationSystemTest {
 		writer.addFriendPos(name, x, y);
 		reader = new MessageReader(writer.composeMessage());
 		String[] check = reader.getFriendPos();
-		assertTrue("Check that sent name is identical to recieved name", s.compareTo(check[0]) == 0); 
-		assertTrue("Check that sent x is identical to recieved x", x == Double.parseDouble(check[1])); 
-		assertTrue("Check that sent y is identical to recieved y", y == Double.parseDouble(check[2])); 
+		assertTrue("Check that sent name is identical to received name", name.compareTo(check[0]) == 0); 
+		assertTrue("Check that sent x is identical to received x", x == Double.parseDouble(check[1])); 
+		assertTrue("Check that sent y is identical to received y", y == Double.parseDouble(check[2])); 
 	}
 	
 	@Test
@@ -97,9 +99,9 @@ public class CommunicationSystemTest {
 		writer.addEnemyPos(name, x, y);
 		reader = new MessageReader(writer.composeMessage());
 		String[] check = reader.getEnemyPos();
-		assertTrue("Check that sent name is identical to recieved name", s.compareTo(check[0]) == 0); 
-		assertTrue("Check that sent x is identical to recieved x", x == Double.parseDouble(check[1])); 
-		assertTrue("Check that sent y is identical to recieved y", y == Double.parseDouble(check[2])); 
+		assertTrue("Check that sent name is identical to received name", name.compareTo(check[0]) == 0); 
+		assertTrue("Check that sent x is identical to received x", x == Double.parseDouble(check[1])); 
+		assertTrue("Check that sent y is identical to received y", y == Double.parseDouble(check[2])); 
 	}
 	
 	@Test
@@ -110,17 +112,17 @@ public class CommunicationSystemTest {
 		double velocity = 30.0;
 		double energy = 120.0;
 		double heading = 12.3;
-		double gunHeading = null;
+		double gunHeading = -1;
 		writer.addEnemyPos(name, x, y);
 		reader = new MessageReader(writer.composeMessage());
 		String[] check = reader.getEnemyDetails();
-		assertTrue("Check that sent name is identical to recieved name", s.compareTo(check[0]) == 0); 
-		assertTrue("Check that sent x is identical to recieved x", x == Double.parseDouble(check[1])); 
-		assertTrue("Check that sent y is identical to recieved y", y == Double.parseDouble(check[2])); 
-		assertTrue("Check that sent velocity is identical to recieved velocity", velocity == Double.parseDouble(check[3])); 
-		assertTrue("Check that sent energy is identical to recieved energy", energy == Double.parseDouble(check[4])); 
-		assertTrue("Check that sent heading is identical to recieved heading", heading == Double.parseDouble(check[5])); 
-		assertTrue("Check that sent gunHeading is identical to recieved gunHeading", gunHeading == Double.parseDouble(check[gunHeading])); 
+		assertTrue("Check that sent name is identical to received name", name.compareTo(check[0]) == 0); 
+		assertTrue("Check that sent x is identical to received x", x == Double.parseDouble(check[1])); 
+		assertTrue("Check that sent y is identical to received y", y == Double.parseDouble(check[2])); 
+		assertTrue("Check that sent velocity is identical to received velocity", velocity == Double.parseDouble(check[3])); 
+		assertTrue("Check that sent energy is identical to received energy", energy == Double.parseDouble(check[4])); 
+		assertTrue("Check that sent heading is identical to received heading", heading == Double.parseDouble(check[5])); 
+		assertTrue("Check that sent gunHeading is identical to received gunHeading", gunHeading == Double.parseDouble(check[6])); 
 	}
 	
 	@Test
@@ -129,7 +131,7 @@ public class CommunicationSystemTest {
 		writer.addTargetEnemy(name);
 		reader = new MessageReader(writer.composeMessage());
 		String check = reader.getTargetEnemy();
-		assertTrue("Check that sent string is identical to recieved string", name.compareTo(check) == 0); 
+		assertTrue("Check that sent string is identical to received string", name.compareTo(check) == 0); 
 	}
 	
 	@Test
@@ -138,9 +140,9 @@ public class CommunicationSystemTest {
 		double y = 0.0;
 		writer.addTargetPos(x, y);
 		reader = new MessageReader(writer.composeMessage());
-		String[] check = reader.getTargetPos();
-		assertTrue("Check that sent x is identical to recieved x", x == Double.parseDouble(check[0])); 
-		assertTrue("Check that sent y is identical to recieved y", y == Double.parseDouble(check[1])); 
+		Point2D.Double check = reader.getTargetPos();
+		assertTrue("Check that sent x is identical to received x", x == check.getX()); 
+		assertTrue("Check that sent y is identical to received y", y == check.getY());
 	}
 	
 	@Test
@@ -149,8 +151,8 @@ public class CommunicationSystemTest {
 		double y = 0.0;
 		writer.addMoveTo(x, y);
 		reader = new MessageReader(writer.composeMessage());
-		String[] check = reader.getMoveTo();
-		assertTrue("Check that sent x is identical to recieved x", x == Double.parseDouble(check[0])); 
-		assertTrue("Check that sent y is identical to recieved y", y == Double.parseDouble(check[1])); 
+		Point2D.Double check = reader.getMoveTo();
+		assertTrue("Check that sent x is identical to received x", x == check.getX()); 
+		assertTrue("Check that sent y is identical to received y", y == check.getY()); 
 	}
 }

@@ -27,7 +27,7 @@ package etsa03;
  */
 public class MessageWriter {
 	
-	private String leaderShip;
+	private String leadership;
 	private String teamMode;
 	private String myPos;
 	private String[] friendPos;
@@ -44,7 +44,7 @@ public class MessageWriter {
 	 * Construct a class to help composing a message.
 	 */
 	public MessageWriter() {
-		leaderShip = new String();
+		leadership = new String();
 		teamMode = new String();
 		myPos = new String();
 		friendPos = new String[10];
@@ -63,7 +63,7 @@ public class MessageWriter {
 	 * @param command
 	 */
 	public void addLeadership(String command) {
-		leaderShip = "leaderShip;" + command;
+		leadership = "leadership;" + command;
 	}
 	
 	/**
@@ -144,7 +144,7 @@ public class MessageWriter {
 	 */
 	public String composeMessage() {
 		StringBuilder sb = new StringBuilder();
-		addLine(sb, leaderShip);
+		addLine(sb, leadership);
 		addLine(sb, teamMode);
 		addLine(sb, myPos);
 		for (int i = 0; i < friendPosCount; i++) {
