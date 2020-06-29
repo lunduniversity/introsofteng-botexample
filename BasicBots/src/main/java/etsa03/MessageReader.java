@@ -43,8 +43,8 @@ public class MessageReader {
 	 * Returns the value of the leadership line if the message contains it. Otherwise returns empty string.
 	 * @return value of leadership line or empty string if the line is not included in the message.
 	 */
-	public String getLeaderShip() {
-		String[] values = getValues("leaderShip");
+	public String getLeadership() {
+		String[] values = getValues("leadership");
 		if (values.length > 0) return values[0];
 		return "";
 	}
@@ -62,9 +62,12 @@ public class MessageReader {
 	 * Returns the value of the myPos line if the message contains it. Otherwise returns null.
 	 * @return a point created from the (x,y) values in the myPos line or null if the line is not included in the message or parsing fails.
 	 */
-	public String[] getMyPos() {
+	public Point2D.Double getMyPos() {
 		String[] values = getValues("myPos");
-		if (values.length > 0) return values;
+		if (values.length > 0) {
+			String[] data = values[0].split(";");
+			return new Point2D.Double(Double.parseDouble(data[0]), Double.parseDouble(data[1]));
+		}
 		return null;
 	}
 	
