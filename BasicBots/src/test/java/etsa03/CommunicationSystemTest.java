@@ -73,9 +73,9 @@ public class CommunicationSystemTest {
 		double y = 0.0;
 		writer.addMyPos(x, y);
 		reader = new MessageReader(writer.composeMessage());
-		String[] check = reader.getMyPos();
-		assertTrue("Check that sent x is identical to received x", x == Double.parseDouble(check[0])); 
-		assertTrue("Check that sent y is identical to received y", y == Double.parseDouble(check[1])); 
+		Point2D.Double check = reader.getMyPos();
+		assertTrue("Check that sent x is identical to received x", x == check.getX()); 
+		assertTrue("Check that sent y is identical to received y", y == check.getY()); 
 	}
 	
 	@Test
