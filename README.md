@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/lunduniversity/introsofteng-botexample.svg?branch=before-lab4)](https://travis-ci.org/lunduniversity/introsofteng-botexample)
+![Run Gradle](https://github.com/lunduniversity/introsofteng-botexample/workflows/Run%20Gradle/badge.svg?branch=before-lab4)
 
 # introsofteng-botexample
 Supplementary teaching material for "Introduction to Software Engineering" at Lund University, LTH. http://cs.lth.se/etsa03/
@@ -13,7 +13,7 @@ This repository can act as a good starting point for the projects. The functiona
 
 ## License
 
-Copyright © 2018-2020. Dept. of Computer Science at Lund University, Lund, Sweden.
+Copyright © 2018-2021. Dept. of Computer Science at Lund University, Lund, Sweden.
 
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 
