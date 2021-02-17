@@ -43,8 +43,8 @@ public class MessageReader {
 	 * Returns the value of the leadership line if the message contains it. Otherwise returns empty string.
 	 * @return value of leadership line or empty string if the line is not included in the message.
 	 */
-	public String getLeaderShip() {
-		String[] values = getValues("leaderShip");
+	public String getLeadership() {
+		String[] values = getValues("leadership");
 		if (values.length > 0) return values[0];
 		return "";
 	}

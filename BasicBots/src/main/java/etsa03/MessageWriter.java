@@ -67,7 +67,7 @@ public class MessageWriter {
 	 * @param command
 	 */
 	public void addLeadership(String command) {
-		leaderShip = "leaderShip;" + command;
+		leaderShip = "leadership;" + command;
 	}
 	
 	/**
