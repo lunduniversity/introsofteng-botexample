@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/lunduniversity/introsofteng-botexample.svg?branch=before-lab3)](https://travis-ci.org/lunduniversity/introsofteng-botexample)
+![Run Gradle](https://github.com/lunduniversity/introsofteng-botexample/workflows/Run%20Gradle/badge.svg?branch=before-lab3)
 
 # introsofteng-botexample
 Supplementary teaching material for "Introduction to Software Engineering" at Lund University, LTH. http://cs.lth.se/etsa03/
