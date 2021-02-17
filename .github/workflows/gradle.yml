@@ -1,9 +1,9 @@
 name: Run Gradle
 on:
   push:
-    branches: [ master ]
+    branches: [ master, before-lab3, before-lab4 ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, before-lab3, before-lab4 ]
 jobs:
   gradle:
     strategy:
