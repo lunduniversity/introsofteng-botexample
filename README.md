@@ -13,7 +13,7 @@ This repository can act as a good starting point for the projects. The functiona
 
 ## License
 
-Copyright © 2018-2020. Dept. of Computer Science at Lund University, Lund, Sweden.
+Copyright © 2018-2021. Dept. of Computer Science at Lund University, Lund, Sweden.
 
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 
