@@ -1,4 +1,4 @@
-![Run Gradle](https://github.com/lunduniversity/introsofteng-botexample/workflows/Run%20Gradle/badge.svg?branch=before-lab3)
+[![Run Gradle](https://github.com/lunduniversity/introsofteng-botexample/workflows/Run%20Gradle/badge.svg?branch=before-lab3)](https://github.com/lunduniversity/introsofteng-botexample/actions)
 
 # introsofteng-botexample
 Supplementary teaching material for "Introduction to Software Engineering" at Lund University, LTH. http://cs.lth.se/etsa03/
