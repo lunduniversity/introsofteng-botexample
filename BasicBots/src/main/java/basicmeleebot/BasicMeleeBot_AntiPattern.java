@@ -92,11 +92,11 @@ public class BasicMeleeBot_AntiPattern extends TeamRobot {
 			double angle = Math.atan2(xForce, yForce);
 			if (xForce == 0 && yForce == 0) {
 				// If no force, do nothing.
-			} else if (Math.abs(angle - Utils.normalRelativeAngle(getHeadingRadians())) < Math.PI / 2) {
-				setTurnRightRadians(Utils.normalRelativeAngle(angle - getHeadingRadians()));
+			} else if (Math.abs(Utils.normalRelativeAngle(angle - Utils.normalRelativeAngle(getHeadingRadians()))) < Math.PI / 2) {
+				setTurnRightRadians(Utils.normalRelativeAngle(angle - Utils.normalRelativeAngle(getHeadingRadians())));
 				setAhead(Double.POSITIVE_INFINITY);
 			} else {
-				setTurnRightRadians(Utils.normalRelativeAngle(angle + Math.PI - getHeadingRadians()));
+				setTurnRightRadians(Utils.normalRelativeAngle(angle + Math.PI - Utils.normalRelativeAngle(getHeadingRadians())));
 				setAhead(Double.NEGATIVE_INFINITY);
 			}
 			
