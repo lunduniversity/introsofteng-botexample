@@ -1,18 +1,14 @@
 /**	
 Copyright (c) 2020 Teodor Ahlinder
-
 Building on work by Mathew A. Nelson and Robocode contributors.
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -170,6 +166,35 @@ public class MessageWriterTest {
 		String name = "fakeEnemy";
 		String message = "targetEnemy;" + name;
 		writer.addTargetEnemy(name);
+		String check = writer.composeMessage();
+		assertTrue("Check that sent string is identical to received string", message.compareTo(check) == 0); 
+	}
+	
+	@Test
+	public void testOneBulletDetails() {
+		double x = 25.2;
+		double y = 0.0;
+		double absBearing = 90.0;
+		double bulletPower = 0.8;
+		String message = "bulletDetails;" + x + ";" + y + ";" + absBearing + ";" + bulletPower;
+		writer.addBulletDetails(x, y, absBearing, bulletPower);
+		String check = writer.composeMessage();
+		assertTrue("Check that sent string is identical to received string", message.compareTo(check) == 0); 
+	}
+	
+	@Test
+	public void testTwoBulletDetails() {
+		double x1 = 25.2;
+		double y1 = 0.0;
+		double absBearing1 = 90.0;
+		double bulletPower1 = 0.8;
+		double x2 = 14.0;
+		double y2 = 80.5;
+		double absBearing2 = 12.0;
+		double bulletPower2 = 0.2;
+		String message = "bulletDetails;" + x1 + ";" + y1 + ";" + absBearing1 + ";" + bulletPower1 + "\n" + "bulletDetails;" + x2 + ";" + y2 + ";" + absBearing2 + ";" + bulletPower2;
+		writer.addBulletDetails(x1, y1, absBearing1, bulletPower1);
+		writer.addBulletDetails(x2, y2, absBearing2, bulletPower2);
 		String check = writer.composeMessage();
 		assertTrue("Check that sent string is identical to received string", message.compareTo(check) == 0); 
 	}
