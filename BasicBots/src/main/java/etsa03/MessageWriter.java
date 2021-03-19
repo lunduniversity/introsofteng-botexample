@@ -1,18 +1,14 @@
 /**	
 Copyright (c) 2017 David Phung
-
 Building on work by Mathew A. Nelson and Robocode contributors.
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -31,7 +27,7 @@ package etsa03;
  */
 public class MessageWriter {
 	
-	private String leaderShip;
+	private String leadership;
 	private String teamMode;
 	private String myPos;
 	private String[] friendPos;
@@ -41,6 +37,8 @@ public class MessageWriter {
 	private String[] enemyDetails;
 	private int enemyDetailsCount;
 	private String targetEnemy;
+	private String[] bulletDetails;
+	private int bulletDetailsCount;
 	private String targetPos;
 	private String moveTo;
 	
@@ -48,7 +46,7 @@ public class MessageWriter {
 	 * Construct a class to help composing a message.
 	 */
 	public MessageWriter() {
-		leaderShip = new String();
+		leadership = new String();
 		teamMode = new String();
 		myPos = new String();
 		friendPos = new String[10];
@@ -58,6 +56,8 @@ public class MessageWriter {
 		enemyDetails = new String[10];
 		enemyDetailsCount = 0;
 		targetEnemy = new String();
+		bulletDetails = new String[50];
+		bulletDetailsCount = 0;
 		targetPos = new String();
 		moveTo = new String();
 	}
@@ -67,7 +67,7 @@ public class MessageWriter {
 	 * @param command
 	 */
 	public void addLeadership(String command) {
-		leaderShip = "leadership;" + command;
+		leadership = "leadership;" + command;
 	}
 	
 	/**
@@ -108,12 +108,13 @@ public class MessageWriter {
 	}
 	
 	/**
-	 * Add an enemyPos line. Note: we can have multiple lines of this (at most 10).
+	 * Add an enemyDetails line. Note: we can have multiple lines of this (at most 10).
 	 */
 	public void addEnemyDetails(String name, double x, double y, double velocity, double energy, double heading, double gunHeading) {
 		enemyDetails[enemyDetailsCount] = "enemyDetails;" + name + ";" + x + ";" + y + ";" + velocity + ";" + energy + ";" + heading + ";" + gunHeading;
 		enemyDetailsCount++;
 	}
+	
 	/**
 	 * Add the targetEnemy line.
 	 * @param x
@@ -121,6 +122,14 @@ public class MessageWriter {
 	 */
 	public void addTargetEnemy(String name) {
 		targetEnemy = "targetEnemy;" + name;
+	}
+	
+	/**
+	 * Add an bulletDetails line. Note: we can have multiple lines of this (at most 50).
+	 */
+	public void addBulletDetails(double x, double y, double absBearing, double bulletPower) {
+		bulletDetails[bulletDetailsCount] = "bulletDetails;" + x + ";" + y + ";" + absBearing + ";" + bulletPower;
+		bulletDetailsCount++;
 	}
 	
 	/**
@@ -147,7 +156,7 @@ public class MessageWriter {
 	 */
 	public String composeMessage() {
 		StringBuilder sb = new StringBuilder();
-		addLine(sb, leaderShip);
+		addLine(sb, leadership);
 		addLine(sb, teamMode);
 		addLine(sb, myPos);
 		for (int i = 0; i < friendPosCount; i++) {

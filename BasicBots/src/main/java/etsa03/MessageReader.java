@@ -62,9 +62,12 @@ public class MessageReader {
 	 * Returns the value of the myPos line if the message contains it. Otherwise returns null.
 	 * @return a point created from the (x,y) values in the myPos line or null if the line is not included in the message or parsing fails.
 	 */
-	public String[] getMyPos() {
+	public Point2D.Double getMyPos() {
 		String[] values = getValues("myPos");
-		if (values.length > 0) return values;
+		if (values.length > 0) {
+			String[] data = values[0].split(";");
+			return new Point2D.Double(Double.parseDouble(data[0]), Double.parseDouble(data[1]));
+		}
 		return null;
 	}
 	
@@ -105,6 +108,15 @@ public class MessageReader {
 		String[] values = getValues("targetEnemy");
 		if (values.length > 0) return values[0];
 		return "";
+	}
+	
+	/**
+	 * Returns the values of the enemyDetails lines if the message contains any. Otherwise returns an empty array.
+	 * @return an array of strings created from values in the enemyPos lines or an empty array if no enemyPos line is included in the message.
+	 */
+	public String[] getBulletDetails() {
+		String[] values = getValues("bulletDetails");
+		return values;
 	}
 	
 	/**

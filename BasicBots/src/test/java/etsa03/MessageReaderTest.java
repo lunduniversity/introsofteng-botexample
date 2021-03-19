@@ -1,18 +1,14 @@
 /**	
 Copyright (c) 2020 Teodor Ahlinder
-
 Building on work by Mathew A. Nelson and Robocode contributors.
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -70,9 +66,9 @@ public class MessageReaderTest {
 		double y = 0.0;
 		String message = "myPos;" + x + ";" + y;
 		reader = new MessageReader(message);
-		String[] check = reader.getMyPos();
-		//assertTrue("Check that sent x is identical to received x", x == Double.parseDouble(check[0])); 
-		//assertTrue("Check that sent y is identical to received y", y == Double.parseDouble(check[1])); 
+		Point2D.Double check = reader.getMyPos();
+		assertTrue("Check that sent x is identical to received x", x == check.getX()); 
+		assertTrue("Check that sent y is identical to received y", y == check.getY()); 
 	}
 	
 	@Test
@@ -183,7 +179,7 @@ public class MessageReaderTest {
 		double energy2 = 23.0;
 		double heading2 = 156.2;
 		double gunHeading2 = -1;
-		String message = "enemyDetails;" + name1 + ";" + x1 + ";" + y1  + ";" + velocity1 + ";" + energy1 + ";" + heading1 + ";" + gunHeading1 + "\n" + "enemyDetails;" + name2 + ";" + x2 + ";" + y2  + ";" + velocity2 + ";" + energy2 + ";" + heading2 + ";" + gunHeading2;
+		String message = "enemyDetails;" + name1 + ";" + x1 + ";" + y1 + ";" + velocity1 + ";" + energy1 + ";" + heading1 + ";" + gunHeading1 + "\n" + "enemyDetails;" + name2 + ";" + x2 + ";" + y2 + ";" + velocity2 + ";" + energy2 + ";" + heading2 + ";" + gunHeading2;
 		reader = new MessageReader(message);
 		String[] data = reader.getEnemyDetails();
 		String[] check1 = data[0].split(";");
@@ -211,6 +207,47 @@ public class MessageReaderTest {
 		reader = new MessageReader(message);
 		String check = reader.getTargetEnemy();
 		assertTrue("Check that sent string is identical to received string", name.compareTo(check) == 0); 
+	}
+	
+	@Test
+	public void testOneBulletDetails() {
+		double x = 25.2;
+		double y = 0.0;
+		double absBearing = 90.0;
+		double bulletPower = 0.8;
+		String message = "bulletDetails;" + x + ";" + y + ";" + absBearing + ";" + bulletPower;
+		reader = new MessageReader(message);
+		String[] data = reader.getBulletDetails();
+		String[] check = data[0].split(";");
+		assertTrue("Check that sent x is identical to received x", x == Double.parseDouble(check[0])); 
+		assertTrue("Check that sent y is identical to received y", y == Double.parseDouble(check[1])); 
+		assertTrue("Check that sent absBearing is identical to received absBearing", absBearing == Double.parseDouble(check[2])); 
+		assertTrue("Check that sent bulletPower is identical to received bulletPower", bulletPower == Double.parseDouble(check[3]));
+	}
+	
+	@Test
+	public void testTwoBulletDetails() {
+		double x1 = 25.2;
+		double y1 = 0.0;
+		double absBearing1 = 90.0;
+		double bulletPower1 = 0.8;
+		double x2 = 14.0;
+		double y2 = 80.5;
+		double absBearing2 = 12.0;
+		double bulletPower2 = 0.2;
+		String message = "bulletDetails;" + x1 + ";" + y1 + ";" + absBearing1 + ";" + bulletPower1 + "\n" + "bulletDetails;" + x2 + ";" + y2 + ";" + absBearing2 + ";" + bulletPower2;
+		reader = new MessageReader(message);
+		String[] data = reader.getEnemyDetails();
+		String[] check1 = data[0].split(";");
+		String[] check2 = data[1].split(";");
+		assertTrue("Check that sent x is identical to received x", x1 == Double.parseDouble(check1[0])); 
+		assertTrue("Check that sent y is identical to received y", y1 == Double.parseDouble(check1[1])); 
+		assertTrue("Check that sent velocity is identical to received velocity", absBearing1 == Double.parseDouble(check1[2])); 
+		assertTrue("Check that sent energy is identical to received energy", bulletPower1 == Double.parseDouble(check1[3]));
+		assertTrue("Check that sent x is identical to received x", x2 == Double.parseDouble(check2[0])); 
+		assertTrue("Check that sent y is identical to received y", y2 == Double.parseDouble(check2[1])); 
+		assertTrue("Check that sent velocity is identical to received velocity", absBearing2 == Double.parseDouble(check2[2])); 
+		assertTrue("Check that sent energy is identical to received energy", bulletPower2 == Double.parseDouble(check2[3]));
 	}
 	
 	@Test
