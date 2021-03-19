@@ -26,8 +26,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import etsa03.MessageReaderTest;
+import etsa03.MessageWriterTest;
+
 @RunWith(Suite.class)
-@SuiteClasses({ MathUtilsTest.class, PositioningSystemTest.class, EnemyTrackerTest.class, TargetingSystemTest.class, MovementSystemTest.class })
+@SuiteClasses({ MathUtilsTest.class, PositioningSystemTest.class, EnemyTrackerTest.class, TargetingSystemTest.class, MovementSystemTest.class,
+                MessageWriterTest.class, MessageReaderTest.class })
 public class BMBUnitTestSuite {
 
 }

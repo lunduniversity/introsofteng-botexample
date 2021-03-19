@@ -37,6 +37,8 @@ public class MessageWriter {
 	private String[] enemyDetails;
 	private int enemyDetailsCount;
 	private String targetEnemy;
+	private String[] bulletDetails;
+	private int bulletDetailsCount;
 	private String targetPos;
 	private String moveTo;
 	
@@ -54,6 +56,8 @@ public class MessageWriter {
 		enemyDetails = new String[10];
 		enemyDetailsCount = 0;
 		targetEnemy = new String();
+		bulletDetails = new String[50];
+		bulletDetailsCount = 0;
 		targetPos = new String();
 		moveTo = new String();
 	}
@@ -104,7 +108,7 @@ public class MessageWriter {
 	}
 	
 	/**
-	 * Add an enemyPos line. Note: we can have multiple lines of this (at most 10).
+	 * Add an enemyDetails line. Note: we can have multiple lines of this (at most 10).
 	 */
 	public void addEnemyDetails(String name, double x, double y, double velocity, double energy, double heading, double gunHeading) {
 		enemyDetails[enemyDetailsCount] = "enemyDetails;" + name + ";" + x + ";" + y + ";" + velocity + ";" + energy + ";" + heading + ";" + gunHeading;
@@ -118,6 +122,14 @@ public class MessageWriter {
 	 */
 	public void addTargetEnemy(String name) {
 		targetEnemy = "targetEnemy;" + name;
+	}
+	
+	/**
+	 * Add an bulletDetails line. Note: we can have multiple lines of this (at most 50).
+	 */
+	public void addBulletDetails(double x, double y, double absBearing, double bulletPower) {
+		bulletDetails[bulletDetailsCount] = "bulletDetails;" + x + ";" + y + ";" + absBearing + ";" + bulletPower;
+		bulletDetailsCount++;
 	}
 	
 	/**

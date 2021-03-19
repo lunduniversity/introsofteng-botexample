@@ -111,6 +111,15 @@ public class MessageReader {
 	}
 	
 	/**
+	 * Returns the values of the enemyDetails lines if the message contains any. Otherwise returns an empty array.
+	 * @return an array of strings created from values in the enemyPos lines or an empty array if no enemyPos line is included in the message.
+	 */
+	public String[] getBulletDetails() {
+		String[] values = getValues("bulletDetails");
+		return values;
+	}
+	
+	/**
 	 * Returns the value of the targetPos line if the message contains it. Otherwise returns null.
 	 * @return a point created from the (x,y) values in the targetPos line or null if the line is not included in the message or parsing fails.
 	 */
