@@ -237,7 +237,7 @@ public class MessageReaderTest {
 		double bulletPower2 = 0.2;
 		String message = "bulletDetails;" + x1 + ";" + y1 + ";" + absBearing1 + ";" + bulletPower1 + "\n" + "bulletDetails;" + x2 + ";" + y2 + ";" + absBearing2 + ";" + bulletPower2;
 		reader = new MessageReader(message);
-		String[] data = reader.getEnemyDetails();
+		String[] data = reader.getBulletDetails();
 		String[] check1 = data[0].split(";");
 		String[] check2 = data[1].split(";");
 		assertTrue("Check that sent x is identical to received x", x1 == Double.parseDouble(check1[0])); 

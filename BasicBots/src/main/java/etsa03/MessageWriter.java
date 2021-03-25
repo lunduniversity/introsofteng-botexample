@@ -125,7 +125,7 @@ public class MessageWriter {
 	}
 	
 	/**
-	 * Add an bulletDetails line. Note: we can have multiple lines of this (at most 50).
+	 * Add a bulletDetails line. Note: we can have multiple lines of this (at most 50).
 	 */
 	public void addBulletDetails(double x, double y, double absBearing, double bulletPower) {
 		bulletDetails[bulletDetailsCount] = "bulletDetails;" + x + ";" + y + ";" + absBearing + ";" + bulletPower;
@@ -169,6 +169,9 @@ public class MessageWriter {
 			addLine(sb, enemyDetails[i]);
 		}
 		addLine(sb, targetEnemy);
+		for (int i = 0; i < bulletDetailsCount; i++) {
+			addLine(sb, bulletDetails[i]);
+		}
 		addLine(sb, targetPos);
 		addLine(sb, moveTo);
 		
