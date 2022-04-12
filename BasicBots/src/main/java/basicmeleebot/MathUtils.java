@@ -54,7 +54,7 @@ public class MathUtils {
 	public static double calcAngle(Point2D.Double p1, Point2D.Double p2) {
 		double dx = p2.x - p1.x;
 		double dy = p2.y - p1.y;
-		return Math.atan2(dy, dx);
+		return Math.atan2(dx, dy);
 	}
 	
 	/**
