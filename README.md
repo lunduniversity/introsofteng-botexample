@@ -1,4 +1,6 @@
 # introsofteng-botexample
+[![CodeScene Code Health](https://codescene.io/projects/42999/status-badges/code-health)](https://codescene.io/projects/42999)
+
 Supplementary teaching material for "Introduction to Software Engineering" at Lund University, LTH. http://cs.lth.se/etsa03/
 
 This repository contains the source code needed to complete the ETSA03 lab exercises, i.e., implementing Basic Melee Bot (BMB). The repository contains all dependencies to allow further evolution into the course project. Furthermore, the repository contains three branches:
