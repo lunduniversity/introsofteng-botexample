@@ -1,4 +1,4 @@
-name: Run Gradle
+﻿name: Build+Test
 on:
   push:
     branches: [ master ]
@@ -8,7 +8,7 @@ jobs:
   gradle:
     strategy:
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
@@ -17,12 +17,12 @@ jobs:
         java-version: 1.8
     - name: Grant execute permission for gradlew
       if: runner.os == 'Linux'
-      run: chmod +x BasicBots/gradlew
+      run: chmod +x BasicMeleeBot/gradlew
     - uses: eskatos/gradle-command-action@v1
       with:
         arguments: build --scan
-        build-root-directory: BasicBots
-        wrapper-directory: BasicBots
+        build-root-directory: BasicMeleeBot
+        wrapper-directory: BasicMeleeBot
       id: gradle
     - name: "Comment failed build scan url"
       uses: actions/github-script@v3
@@ -47,4 +47,23 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             body: '${{ github.workflow }} succeeded: ${{ steps.gradle.outputs.build-scan-url }}'
-          })  
+          })
+    - name: "Test coverage measurement" 
+      uses: eskatos/gradle-command-action@v1
+      if: success()
+      with:
+        arguments: jacocoTestReport
+        build-root-directory: BasicMeleeBot
+        wrapper-directory: BasicMeleeBot
+    - name: "Test coverage publish"
+      uses: paambaati/codeclimate-action@v2.7.5
+      env:
+        CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+        JACOCO_SOURCE_PATH: "${{github.workspace}}/BasicMeleeBot/src/main/java"
+      with:
+        # The report file must be there, otherwise Code Climate won't find it      
+        debug: true
+        prefix: ${{github.workspace}}
+        coverageLocations: |
+          ${{github.workspace}}/BasicMeleeBot/build/customJacocoReportDir/test/jacocoTestReport.xml:jacoco
+        
